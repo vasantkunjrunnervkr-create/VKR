@@ -26,9 +26,10 @@ gap:15px;
 }
 
 .logo-section img{
-    width:85px;
-    height:85px;
+    width:100px;
+    height:100px;
     object-fit:contain;
+}
 }
 nav a{
 color:white;
