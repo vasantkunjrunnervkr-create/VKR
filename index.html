@@ -1,79 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vasant Kunj Runner (VKR)</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo-section">
+<img src="logo.png" alt="VKR Logo">
+<h2>VASANT KUNJ RUNNER</h2>
+</div>
+
+<nav>
+<a href="#about">About</a>
+<a href="#vision">Vision</a>
+<a href="#team">Team</a>
+<a href="#events">Events</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+<!-- HERO SLIDER -->
+
 <section class="hero-slider">
 
-    <div class="slide active" style="background-image:url('images/run1.jpg');"></div>
-    <div class="slide" style="background-image:url('images/run2.jpg');"></div>
-    <div class="slide" style="background-image:url('images/run3.jpg');"></div>
-    <div class="slide" style="background-image:url('images/run4.jpg');"></div>
-    <div class="slide" style="background-image:url('images/run5.jpg');"></div>
+<div class="slide active"
+style="background-image:url('banner1.jpg')"></div>
 
-    <div class="overlay"></div>
+<div class="slide"
+style="background-image:url('banner2.jpg')"></div>
 
-    <div class="hero-content">
+<div class="slide"
+style="background-image:url('banner3.jpg')"></div>
 
-        <h1>VASANT KUNJ RUNNER</h1>
+<div class="slide"
+style="background-image:url('banner4.jpg')"></div>
 
-        <p>Fitness • Friendship • Finish Lines</p>
+<div class="slide"
+style="background-image:url('banner5.jpg')"></div>
 
-        <div class="social-buttons">
+<div class="slide"
+style="background-image:url('banner6.jpg')"></div>
 
-            <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" class="btn">
-                📱 Join VKR
-            </a>
+<div class="hero-content">
 
-            <a href="https://www.instagram.com/vasant_kunj_runner" class="btn">
-                📸 Instagram
-            </a>
+<h1>VASANT KUNJ RUNNER</h1>
 
-            <a href="https://www.facebook.com/share/1Pc8AXGDj5/" class="btn">
-                👍 Facebook
-            </a>
+<p>Fitness • Friendship • Finish Lines</p>
 
-            <a href="https://youtube.com/@vasantkunjrunnervkr" class="btn">
-                ▶ YouTube
-            </a>
+<div>
 
-        </div>
+<a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ"
+target="_blank"
+class="btn">
 
-    </div>
+<i class="fa-brands fa-whatsapp"></i>
+Join VKR
+
+</a>
+
+<a href="https://www.instagram.com/vasant_kunj_runner"
+target="_blank"
+class="btn">
+
+<i class="fa-brands fa-instagram"></i>
+Instagram
+
+</a>
+
+<a href="https://www.facebook.com/share/1Pc8AXGDj5/"
+target="_blank"
+class="btn">
+
+<i class="fa-brands fa-facebook"></i>
+Facebook
+
+</a>
+
+<a href="https://youtube.com/@vasantkunjrunnervkr"
+target="_blank"
+class="btn">
+
+<i class="fa-brands fa-youtube"></i>
+YouTube
+
+</a>
+
+</div>
+
+</div>
 
 </section>
-<script>
 
-let slides = document.querySelectorAll(".slide");
-let current = 0;
-
-setInterval(() => {
-
-slides[current].classList.remove("active");
-
-current++;
-
-if(current >= slides.length){
-current = 0;
-}
-
-slides[current].classList.add("active");
-
-}, 2000);
-
-</script>
 <!-- ABOUT -->
 
 <section id="about">
 
-    <h2>About VKR</h2>
+<h2>About VKR</h2>
 
-    <div class="card">
-        <p>
-            Vasant Kunj Runner (VKR) ek community hai jo fitness,
-            friendship aur running ko promote karti hai. Shuruaat
-            kuch doston ne milkar ki thi aur aaj hum running ko
-            har age group tak pahunchana chahte hain.
+<div class="card">
 
-            Hamara goal sirf race finish karna nahi, balki ek
-            healthy aur active lifestyle banana hai.
-        </p>
-    </div>
+<p>
+
+Vasant Kunj Runner (VKR) started as a small group of friends
+who shared a passion for fitness, running and healthy living.
+
+</p>
+
+<br>
+
+<p>
+
+What began as casual evening runs in Vasant Kunj has now grown
+into a community that welcomes runners from all backgrounds.
+
+</p>
+
+<br>
+
+<p>
+
+Our goal is simple:
+Run Together • Stay Fit • Build Friendships
+
+</p>
+
+</div>
 
 </section>
 
@@ -81,100 +147,26 @@ slides[current].classList.add("active");
 
 <section id="vision">
 
-    <h2>Our Vision</h2>
+<h2>Our Vision</h2>
 
-    <div class="card">
-        <p>
-            Annual Marathon Events
-        </p>
+<div class="card">
 
-        <p>
-            Monthly Community Runs
-        </p>
+<p>
 
-        <p>
-            Fitness • Friendship • Finish Lines
-        </p>
+To create an active running culture in Vasant Kunj and inspire
+people of all ages to embrace fitness through community running.
 
-        <p>
-            Vasant Kunj ko ek active running community banana.
-        </p>
-    </div>
+</p>
 
-</section>
+<br>
 
-<!-- TEAM -->
+<p>
 
-<section id="team">
+We aim to organize annual and monthly running events while
+building a strong and positive fitness community.
 
-    <h2>VKR Core Team</h2>
+</p>
 
-    <div class="card">
-
-        <h3>🏆 Akshay Racer</h3>
-        <p>Founder</p>
-
-        <br>
-
-        <h3>🤝 Ajay Gandas</h3>
-        <p>Co-Founder & Community Support</p>
-
-        <br>
-
-        <h3>🏃 Aditya Ojha</h3>
-        <p>Community Coordinator</p>
-
-    </div>
+</div>
 
 </section>
-
-<!-- SUPPORT TEAM -->
-
-<section>
-
-    <h2>Support Team</h2>
-
-    <div class="card">
-
-        Vikas Sharma • Naveen Yadav • Rohit Joshi • Shivam Sharma •
-        Manoj Mehlawat • Hari • Nitin • Yash Mehlawat •
-        Sumit Badgujar • Shubham Pandey • Deepanshu Nasa •
-        Sachin • Pawan Rathore • Manish Dahiya • Ravi Bagotiya •
-        Aditya Bagotiya • Brijmohan • Rajesh
-
-    </div>
-
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-
-    <h2>Contact VKR</h2>
-
-    <div class="card">
-
-        <p><strong>Akshay:</strong> 8285486858</p>
-
-        <br>
-
-        <p><strong>Ajay:</strong> 9953067473</p>
-
-        <br>
-
-        <p>
-            Join our WhatsApp, Instagram, Facebook and YouTube
-            community for updates and upcoming runs.
-        </p>
-
-    </div>
-
-</section>
-
-<footer>
-
-    <p>
-        © 2026 Vasant Kunj Runner (VKR)
-    </p>
-
-</footer>
