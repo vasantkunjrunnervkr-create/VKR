@@ -61,9 +61,11 @@ nav a:hover{
 
 .hero-slider{
     position:relative;
-    height:85vh;
-    min-height:600px;
+    width:100%;
+    height:90vh;
+    min-height:700px;
     overflow:hidden;
+}
 }
 
 .slide{
