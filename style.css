@@ -5,9 +5,14 @@
     font-family:Arial, sans-serif;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     background:#f5f5f5;
     color:#222;
+    line-height:1.6;
 }
 
 /* HEADER */
@@ -18,8 +23,10 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px 50px;
-    flex-wrap:wrap;
+    padding:15px 50px;
+    position:sticky;
+    top:0;
+    z-index:1000;
 }
 
 .logo-section{
@@ -29,28 +36,31 @@ header{
 }
 
 .logo-section img{
-    width:95px;
-    height:95px;
+    width:90px;
+    height:90px;
     object-fit:contain;
+}
+
+.logo-section h2{
+    font-size:24px;
 }
 
 nav a{
     color:white;
     text-decoration:none;
-    margin-left:25px;
+    margin-left:20px;
     font-weight:bold;
-    font-size:18px;
+    transition:.3s;
 }
 
 nav a:hover{
     color:#ff4d4d;
 }
 
-/* HERO IMAGE SLIDER */
+/* HERO SLIDER */
 
 .hero-slider{
     position:relative;
-    width:100%;
     height:85vh;
     min-height:600px;
     overflow:hidden;
@@ -58,8 +68,6 @@ nav a:hover{
 
 .slide{
     position:absolute;
-    top:0;
-    left:0;
     width:100%;
     height:100%;
     background-size:cover;
@@ -76,7 +84,7 @@ nav a:hover{
     content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.55);
 }
 
 .hero-content{
@@ -93,25 +101,25 @@ nav a:hover{
 }
 
 .hero-content h1{
-    font-size:72px;
-    margin-bottom:20px;
+    font-size:70px;
+    margin-bottom:15px;
 }
 
 .hero-content p{
-    font-size:30px;
-    margin-bottom:30px;
+    font-size:28px;
+    margin-bottom:25px;
 }
 
 .btn{
     background:white;
     color:#d32f2f;
     text-decoration:none;
-    padding:14px 24px;
+    padding:14px 25px;
     border-radius:8px;
     font-weight:bold;
     display:inline-block;
     margin:6px;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .btn:hover{
@@ -122,15 +130,15 @@ nav a:hover{
     margin-right:8px;
 }
 
-/* SECTIONS */
+/* CONTENT */
 
 section{
     padding:70px 10%;
 }
 
 section h2{
-    margin-bottom:20px;
     color:#d32f2f;
+    margin-bottom:20px;
     font-size:36px;
 }
 
@@ -138,8 +146,19 @@ section h2{
     background:white;
     padding:25px;
     border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.1);
-    line-height:1.8;
+    box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+/* CONTACT LINKS */
+
+#contact a{
+    text-decoration:none;
+    color:#d32f2f;
+    font-weight:bold;
 }
 
 /* FOOTER */
@@ -154,7 +173,7 @@ footer{
 footer a{
     color:white;
     text-decoration:none;
-    margin:0 10px;
+    margin:0 8px;
 }
 
 footer a:hover{
@@ -184,13 +203,17 @@ nav a{
     height:75px;
 }
 
+.logo-section h2{
+    font-size:20px;
+}
+
 .hero-slider{
     height:70vh;
     min-height:500px;
 }
 
 .hero-content h1{
-    font-size:38px;
+    font-size:36px;
 }
 
 .hero-content p{
