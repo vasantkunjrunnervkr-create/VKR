@@ -11,6 +11,22 @@
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
+  <script>
+
+const slides=document.querySelectorAll('.slide');
+let current=0;
+
+setInterval(()=>{
+
+slides[current].classList.remove('active');
+
+current=(current+1)%slides.length;
+
+slides[current].classList.add('active');
+
+},5000);
+
+</script>
 <body>
 
 <header>
