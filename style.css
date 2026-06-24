@@ -19,9 +19,7 @@ header{
     justify-content:space-between;
     align-items:center;
     padding:20px 50px;
-    position:sticky;
-    top:0;
-    z-index:1000;
+    flex-wrap:wrap;
 }
 
 .logo-section{
@@ -36,42 +34,71 @@ header{
     object-fit:contain;
 }
 
-.logo-section h2{
-    font-size:20px;
-}
-
-nav{
-    display:flex;
-    gap:25px;
-}
-
 nav a{
     color:white;
     text-decoration:none;
+    margin-left:25px;
     font-weight:bold;
-    transition:0.3s;
+    font-size:18px;
 }
 
 nav a:hover{
     color:#ff4d4d;
 }
 
-/* HERO */
+/* HERO IMAGE SLIDER */
 
-.hero{
-    background:#7a0b0b;
-    color:white;
+.hero-slider{
+    position:relative;
+    width:100%;
+    height:85vh;
+    min-height:600px;
+    overflow:hidden;
+}
+
+.slide{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity 1s ease-in-out;
+}
+
+.slide.active{
+    opacity:1;
+}
+
+.slide::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:100px 20px;
+    color:white;
+    padding:20px;
 }
 
-.hero h1{
-    font-size:55px;
-    margin-bottom:15px;
+.hero-content h1{
+    font-size:72px;
+    margin-bottom:20px;
 }
 
-.hero p{
-    font-size:24px;
+.hero-content p{
+    font-size:30px;
     margin-bottom:30px;
 }
 
@@ -79,14 +106,20 @@ nav a:hover{
     background:white;
     color:#d32f2f;
     text-decoration:none;
-    padding:14px 30px;
+    padding:14px 24px;
     border-radius:8px;
     font-weight:bold;
     display:inline-block;
+    margin:6px;
+    transition:0.3s;
 }
 
 .btn:hover{
-    background:#f0f0f0;
+    transform:translateY(-3px);
+}
+
+.btn i{
+    margin-right:8px;
 }
 
 /* SECTIONS */
@@ -96,8 +129,8 @@ section{
 }
 
 section h2{
-    color:#d32f2f;
     margin-bottom:20px;
+    color:#d32f2f;
     font-size:36px;
 }
 
@@ -105,7 +138,8 @@ section h2{
     background:white;
     padding:25px;
     border-radius:12px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+    line-height:1.8;
 }
 
 /* FOOTER */
@@ -114,7 +148,17 @@ footer{
     background:#111;
     color:white;
     text-align:center;
-    padding:25px;
+    padding:30px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+footer a:hover{
+    color:#ff4d4d;
 }
 
 /* MOBILE */
@@ -123,51 +167,47 @@ footer{
 
 header{
     flex-direction:column;
-    padding:15px;
-}
-
-.logo-section{
-    flex-direction:column;
     text-align:center;
-}
-
-.logo-section img{
-    width:80px;
-    height:80px;
-}
-
-.logo-section h2{
-    font-size:18px;
 }
 
 nav{
     margin-top:15px;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
 }
 
-.hero{
-    padding:80px 15px;
+nav a{
+    display:inline-block;
+    margin:8px;
 }
 
-.hero h1{
-    font-size:32px;
+.logo-section img{
+    width:75px;
+    height:75px;
 }
 
-.hero p{
-    font-size:18px;
+.hero-slider{
+    height:70vh;
+    min-height:500px;
+}
+
+.hero-content h1{
+    font-size:38px;
+}
+
+.hero-content p{
+    font-size:20px;
+}
+
+.btn{
+    display:block;
+    width:220px;
+    margin:8px auto;
 }
 
 section{
-    padding:50px 20px;
+    padding:50px 6%;
 }
 
 section h2{
     font-size:28px;
-}
-
-.btn{
-    padding:12px 24px;
 }
 }
