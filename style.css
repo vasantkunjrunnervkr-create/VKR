@@ -11,12 +11,12 @@ color:#222;
 }
 
 header{
-background:#111;
-color:white;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 50px;
+    background:#111;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
 }
 
 .logo-section{
