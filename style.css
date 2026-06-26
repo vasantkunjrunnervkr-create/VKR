@@ -41,7 +41,7 @@ header.scrolled { padding:8px 40px; }
 .logo-section img { width:55px; height:55px; object-fit:contain; }
 .logo-text { display:flex; flex-direction:column; }
 .logo-main { font-size:15px; font-weight:800; letter-spacing:1.5px; color:#fff; }
-.logo-sub { font-size:10px; color:var(--red); letter-spacing:2px; font-weight:600; }
+.logo-sub { font-size:10px; color:var(--red); letter-spacing:1px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:180px; }
 
 nav { display:flex; align-items:center; gap:5px; }
 nav a { color:#ccc; font-size:13px; font-weight:600; letter-spacing:.5px; padding:7px 12px; border-radius:6px; transition:all .2s; }
@@ -62,7 +62,7 @@ nav a:hover { color:#fff; background:rgba(255,255,255,0.06); }
 .hero-slides { position:absolute; inset:0; }
 .slide {
   position:absolute; inset:0;
-  background-size:cover; background-position:center top;
+  background-size:cover; background-position:center 20%;
   background-color:#1a1a1a;
   opacity:0; transition:opacity 1.2s ease-in-out;
 }
@@ -480,4 +480,12 @@ footer { background:#000; border-top:1px solid var(--border); padding:40px 5%; }
   .reg-hero { padding:100px 5% 35px; }
   .reg-container { padding:25px 15px 50px; }
   .form-card { padding:20px 15px; }
+}
+
+/* MOBILE HEADER EXTRA FIX */
+@media(max-width:480px){
+  .logo-main { font-size:13px; letter-spacing:.5px; }
+  .logo-sub { display:none; }
+  .logo-section img { width:45px; height:45px; }
+  header { padding:8px 15px; }
 }
