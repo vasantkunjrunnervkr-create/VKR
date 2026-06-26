@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order — VKR Store</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
 
+<header id="header">
+  <div class="logo-section">
+    <img src="logo.png" alt="VKR Logo">
+    <div class="logo-text">
+      <span class="logo-main">VASANT KUNJ RUNNERS</span>
+      <span class="logo-sub">VKR • VASANT KUNJ, NEW DELHI</span>
+    </div>
+  </div>
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#store">VKR Store</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="register.html" class="nav-cta">Register Now</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</header>
+
+<div class="reg-hero">
+  <div class="reg-hero-content">
+    <div class="hero-badge">🛒 VKR STORE</div>
+    <h1>Place Your Order</h1>
+    <p style="color:#bbb;margin-top:10px;">Official VKR Merchandise — Delivered to Your Door</p>
+  </div>
+</div>
+
+<div id="orderSuccess" class="success-screen" style="display:none;">
+  <div class="success-inner">
+    <div class="success-icon">✅</div>
+    <h2>Order Placed Successfully!</h2>
+    <p id="orderIdDisplay" class="reg-id-text"></p>
+    <p>Our team will contact you within 24 hours to confirm your order and delivery details.</p>
+    <p>For queries: <strong>8285486858</strong></p>
+    <a href="index.html#store" class="btn-primary" style="margin-top:25px;display:inline-block;">← Back to Store</a>
+  </div>
+</div>
+
+<div id="orderContainer" class="reg-container">
+
+  <!-- PRODUCT SUMMARY -->
+  <div class="form-card" style="background:rgba(230,57,70,0.05);border-color:rgba(230,57,70,0.2);">
+    <div class="form-card-header">
+      <i class="fa-solid fa-shirt red-icon"></i>
+      <h3>VKR Running T-Shirt — ₹399</h3>
+    </div>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+      <img src="tshirt1.jpg" alt="VKR T-Shirt" style="width:100px;height:100px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,0.1);" onerror="this.style.display='none'">
+      <div>
+        <p style="color:#ccc;font-size:14px;">Official VKR dry-fit running t-shirt</p>
+        <p style="color:#ccc;font-size:14px;margin-top:5px;">Lightweight, breathable and perfect for morning runs</p>
+        <p style="color:var(--red);font-size:20px;font-weight:800;margin-top:8px;">₹399 per piece</p>
+      </div>
+    </div>
+  </div>
+
+  <form id="orderForm" onsubmit="submitOrder(event)">
+
+    <!-- PERSONAL DETAILS -->
+    <div class="form-card">
+      <div class="form-card-header">
+        <i class="fa-solid fa-user red-icon"></i>
+        <h3>Your Details</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="Your first name" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" placeholder="Your last name" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mobile Number <span class="req">*</span></label>
+          <input type="tel" id="mobile" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required>
+        </div>
+        <div class="form-group">
+          <label>Email <span class="opt">(Optional)</span></label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDER DETAILS -->
+    <div class="form-card">
+      <div class="form-card-header">
+        <i class="fa-solid fa-shirt red-icon"></i>
+        <h3>Order Details</h3>
+      </div>
+      <div class="form-group">
+        <label>T-Shirt Size <span class="req">*</span></label>
+        <div class="size-group">
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="S" required><span>S</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="M"><span>M</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="L"><span>L</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="XL"><span>XL</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="XXL"><span>XXL</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="XXXL"><span>XXXL</span></label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Quantity <span class="req">*</span></label>
+          <input type="number" id="quantity" min="1" max="10" value="1" required onchange="updateTotal()">
+        </div>
+        <div class="form-group">
+          <label>Total Amount</label>
+          <div class="total-display" id="totalDisplay">₹399</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Delivery Address <span class="req">*</span></label>
+        <textarea id="address" placeholder="Full address with landmark, area, pin code" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Any Special Instructions <span class="opt">(Optional)</span></label>
+        <textarea id="notes" placeholder="e.g. preferred delivery time, colour preference etc." rows="2"></textarea>
+      </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="form-card payment-card">
+      <div class="form-card-header">
+        <i class="fa-solid fa-indian-rupee-sign red-icon"></i>
+        <h3>Payment</h3>
+      </div>
+      <div class="payment-box">
+        <div class="payment-left">
+          <p class="payment-title">UPI / Paytm / GPay</p>
+          <p class="payment-number">8285486858</p>
+          <p class="payment-name">Akshay (VKR)</p>
+          <p style="color:#888;font-size:13px;margin-top:8px;">Pay ₹399 per t-shirt</p>
+        </div>
+        <div class="payment-right">
+          <img src="qr.png" alt="QR Code">
+          <p>Scan to Pay</p>
+        </div>
+      </div>
+      <div class="payment-note">
+        <i class="fa-solid fa-circle-info"></i>
+        Complete payment first, then fill in your Transaction ID and upload screenshot below.
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Transaction ID <span class="req">*</span></label>
+          <input type="text" id="transactionId" placeholder="UPI Transaction ID" required>
+        </div>
+        <div class="form-group">
+          <label>Payment Screenshot <span class="req">*</span></label>
+          <input type="file" id="paymentScreenshot" accept="image/jpeg,image/png,application/pdf" required>
+          <small>JPG, PNG or PDF accepted</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="form-actions">
+      <button type="submit" class="btn-primary btn-submit" id="submitBtn">
+        <i class="fa-solid fa-bag-shopping"></i> Place Order
+      </button>
+      <button type="reset" class="btn-reset" onclick="document.getElementById('totalDisplay').innerText='₹399'">
+        <i class="fa-solid fa-rotate-left"></i> Reset
+      </button>
+    </div>
+    <div id="loadingMsg" style="display:none;text-align:center;padding:15px;color:#e63946;font-weight:bold;">
+      ⏳ Placing your order, please wait...
+    </div>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="VKR">
+      <div>
+        <span class="footer-name">VASANT KUNJ RUNNERS</span>
+        <span class="footer-tag">Fitness • Friendship • Finish Lines</span>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Vasant Kunj Runners (VKR) • All Rights Reserved</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+var SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+function updateTotal(){
+  var qty = parseInt(document.getElementById('quantity').value) || 1;
+  document.getElementById('totalDisplay').innerText = '₹' + (qty * 399);
+}
+
+async function submitOrder(e){
+  e.preventDefault();
+  var size = document.querySelector('input[name="tshirtSize"]:checked');
+  if(!size){ alert('Please select a t-shirt size.'); return; }
+  var qty = document.getElementById('quantity').value;
+  var data = {
+    type: 'order',
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    mobile: document.getElementById('mobile').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    tshirtSize: size.value,
+    quantity: qty,
+    totalAmount: '₹' + (parseInt(qty)*399),
+    address: document.getElementById('address').value.trim(),
+    notes: document.getElementById('notes').value.trim(),
+    transactionId: document.getElementById('transactionId').value.trim()
+  };
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('loadingMsg').style.display = 'block';
+  try {
+    var res = await fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify(data) });
+    var result = await res.json();
+    if(result.status === 'success'){
+      document.getElementById('orderContainer').style.display='none';
+      document.getElementById('orderSuccess').style.display='block';
+      document.getElementById('orderIdDisplay').innerText='📦 Order ID: '+result.regId;
+      window.scrollTo(0,0);
+    } else {
+      alert('Something went wrong. Please try again or WhatsApp us at 8285486858.');
+      document.getElementById('submitBtn').disabled=false;
+      document.getElementById('loadingMsg').style.display='none';
+    }
+  } catch(err){
+    alert('Network error. Please check your internet and try again.');
+    document.getElementById('submitBtn').disabled=false;
+    document.getElementById('loadingMsg').style.display='none';
+  }
+}
+</script>
+</body>
+</html>
