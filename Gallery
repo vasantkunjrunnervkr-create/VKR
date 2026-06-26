@@ -1,1 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Vasant Kunj Runners (VKR)</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
 
+<!-- HEADER -->
+<header id="header">
+  <div class="logo-section">
+    <img src="logo.png" alt="VKR Logo">
+    <div class="logo-text">
+      <span class="logo-main">VASANT KUNJ RUNNERS</span>
+      <span class="logo-sub">VKR • VASANT KUNJ, NEW DELHI</span>
+    </div>
+  </div>
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#event">Event</a>
+    <a href="index.html#team">Team</a>
+    <a href="gallery.html" style="color:var(--red)">Gallery</a>
+    <a href="index.html#store">VKR Store</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="register.html" class="nav-cta">Register Now</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+</header>
+
+<!-- GALLERY HERO -->
+<div class="reg-hero">
+  <div class="reg-hero-content">
+    <div class="hero-badge">📸 VKR MOMENTS</div>
+    <h1>Our <span style="color:var(--red)">Gallery</span></h1>
+    <p style="color:#bbb;margin-top:10px;">Memories from our runs, events and community activities</p>
+  </div>
+</div>
+
+<!-- MAIN CAROUSEL -->
+<section class="gallery-section">
+  <div class="gallery-inner">
+
+    <!-- BIG CAROUSEL -->
+    <div class="carousel-wrap">
+      <div class="carousel-main" id="carouselMain">
+        <!-- Photos will be injected by JS -->
+      </div>
+      <button class="carousel-btn carousel-prev" onclick="moveSlide(-1)">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="carousel-btn carousel-next" onclick="moveSlide(1)">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="carousel-counter" id="carouselCounter">1 / 1</div>
+    </div>
+
+    <!-- THUMBNAILS -->
+    <div class="thumb-strip" id="thumbStrip">
+      <!-- Thumbnails injected by JS -->
+    </div>
+
+    <!-- PHOTO GRID BELOW -->
+    <div class="section-label" style="margin-top:60px;">ALL PHOTOS</div>
+    <h2 class="section-title" style="margin-bottom:30px;">VKR <span class="red">Moments</span></h2>
+    <div class="gallery-grid-full" id="galleryGrid">
+      <!-- Grid injected by JS -->
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+  <button class="lightbox-prev" onclick="event.stopPropagation();lightboxMove(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <button class="lightbox-next" onclick="event.stopPropagation();lightboxMove(1)"><i class="fa-solid fa-chevron-right"></i></button>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="VKR">
+      <div>
+        <span class="footer-name">VASANT KUNJ RUNNERS</span>
+        <span class="footer-tag">Fitness • Friendship • Finish Lines</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#event">Event</a>
+      <a href="index.html#team">Team</a>
+      <a href="index.html#store">VKR Store</a>
+      <a href="register.html">Register</a>
+      <a href="index.html#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p class="footer-copy">© 2026 Vasant Kunj Runners (VKR) • All Rights Reserved</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// =====================
+// GALLERY CONFIG
+// Yahan sirf number badlo — kitni photos hain
+// =====================
+var TOTAL_PHOTOS = 30; // <-- Apni photo count yahan likho
+var photos = [];
+for(var i = 1; i <= TOTAL_PHOTOS; i++){
+  photos.push('gallery' + i + '.jpg');
+}
+
+var currentSlide = 0;
+var lightboxIndex = 0;
+
+// BUILD CAROUSEL
+function buildCarousel(){
+  var main = document.getElementById('carouselMain');
+  var strip = document.getElementById('thumbStrip');
+  var grid = document.getElementById('galleryGrid');
+
+  photos.forEach(function(src, i){
+    // Main slide
+    var slide = document.createElement('div');
+    slide.className = 'carousel-slide' + (i===0?' active':'');
+    slide.innerHTML = '<img src="'+src+'" alt="VKR Run '+(i+1)+'" onerror="this.parentElement.style.display=\'none\'">';
+    slide.addEventListener('click', function(){ openLightbox(i); });
+    main.appendChild(slide);
+
+    // Thumbnail
+    var thumb = document.createElement('div');
+    thumb.className = 'thumb-item' + (i===0?' active':'');
+    thumb.innerHTML = '<img src="'+src+'" alt="thumb '+(i+1)+'" onerror="this.parentElement.style.display=\'none\'">';
+    thumb.addEventListener('click', function(){ goToSlide(i); });
+    strip.appendChild(thumb);
+
+    // Grid item
+    var cell = document.createElement('div');
+    cell.className = 'gallery-cell';
+    cell.innerHTML = '<img src="'+src+'" alt="VKR '+(i+1)+'" loading="lazy" onerror="this.parentElement.style.display=\'none\'">';
+    cell.addEventListener('click', function(){ openLightbox(i); });
+    grid.appendChild(cell);
+  });
+
+  updateCounter();
+}
+
+function goToSlide(n){
+  var slides = document.querySelectorAll('.carousel-slide');
+  var thumbs = document.querySelectorAll('.thumb-item');
+  slides[currentSlide].classList.remove('active');
+  thumbs[currentSlide].classList.remove('active');
+  currentSlide = (n + photos.length) % photos.length;
+  slides[currentSlide].classList.add('active');
+  thumbs[currentSlide].classList.add('active');
+  // Scroll thumb into view
+  thumbs[currentSlide].scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+  updateCounter();
+}
+
+function moveSlide(dir){ goToSlide(currentSlide + dir); }
+
+function updateCounter(){
+  document.getElementById('carouselCounter').innerText = (currentSlide+1) + ' / ' + photos.length;
+}
+
+// Auto play
+var autoPlay = setInterval(function(){ moveSlide(1); }, 3000);
+document.getElementById('carouselMain') && document.getElementById('carouselMain').addEventListener('mouseenter', function(){ clearInterval(autoPlay); });
+
+// TOUCH SWIPE
+var touchStartX = 0;
+document.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', function(e){
+  var diff = touchStartX - e.changedTouches[0].clientX;
+  if(Math.abs(diff) > 50){
+    if(diff > 0) moveSlide(1);
+    else moveSlide(-1);
+  }
+});
+
+// KEYBOARD
+document.addEventListener('keydown', function(e){
+  if(document.getElementById('lightbox').classList.contains('open')){
+    if(e.key==='ArrowLeft') lightboxMove(-1);
+    if(e.key==='ArrowRight') lightboxMove(1);
+    if(e.key==='Escape') closeLightbox();
+  } else {
+    if(e.key==='ArrowLeft') moveSlide(-1);
+    if(e.key==='ArrowRight') moveSlide(1);
+  }
+});
+
+// LIGHTBOX
+function openLightbox(i){
+  lightboxIndex = i;
+  document.getElementById('lightboxImg').src = photos[i];
+  document.getElementById('lightboxCounter').innerText = (i+1) + ' / ' + photos.length;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lightboxMove(dir){
+  lightboxIndex = (lightboxIndex + dir + photos.length) % photos.length;
+  document.getElementById('lightboxImg').src = photos[lightboxIndex];
+  document.getElementById('lightboxCounter').innerText = (lightboxIndex+1) + ' / ' + photos.length;
+}
+
+// INIT
+buildCarousel();
+</script>
+</body>
+</html>
