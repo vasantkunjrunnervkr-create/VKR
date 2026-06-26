@@ -1,1 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — VKR 5K Run & Fun Morning</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
 
+<!-- HEADER -->
+<header id="header">
+  <div class="logo-section">
+    <img src="logo.png" alt="VKR Logo">
+    <div class="logo-text">
+      <span class="logo-main">VASANT KUNJ RUNNER</span>
+      <span class="logo-sub">VKR • EST. VASANT KUNJ, NEW DELHI</span>
+    </div>
+  </div>
+  <nav id="mainNav">
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#event">Event</a>
+    <a href="index.html#team">Team</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="index.html#partners">Partners</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="register.html" class="nav-cta">Register Now</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- REGISTER HERO -->
+<div class="reg-hero">
+  <div class="reg-hero-content">
+    <div class="hero-badge">🏃 VKR 5K RUN & FUN MORNING</div>
+    <h1>Event Registration</h1>
+    <div class="reg-hero-meta">
+      <span><i class="fa-regular fa-calendar"></i> 02 August 2026</span>
+      <span><i class="fa-solid fa-location-dot"></i> Sanjay Van, Gate No. 1</span>
+      <span><i class="fa-regular fa-clock"></i> 5:20 AM Reporting</span>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MESSAGE -->
+<div id="successMsg" class="success-screen" style="display:none;">
+  <div class="success-inner">
+    <div class="success-icon">✅</div>
+    <h2>Registration Successful!</h2>
+    <p id="regIdDisplay" class="reg-id-text"></p>
+    <p>Thank you for registering for VKR 5K Run & Fun Morning!</p>
+    <p>Our team will verify your payment and confirm your registration.</p>
+    <p>For any queries, contact: <strong>8285486858</strong></p>
+    <a href="index.html" class="btn-primary" style="margin-top:25px;display:inline-block;">← Back to Home</a>
+  </div>
+</div>
+
+<!-- FORM -->
+<div id="formContainer" class="reg-container">
+  <div class="reg-fee-banner">
+    <span>👨 Men: <strong>₹100</strong></span>
+    <span class="fee-divider">|</span>
+    <span>👩 Women: <strong>₹50</strong></span>
+    <span class="fee-divider">|</span>
+    <span>📅 02 August 2026</span>
+  </div>
+
+  <form id="vkrForm" onsubmit="submitForm(event)">
+
+    <!-- PERSONAL -->
+    <div class="form-card">
+      <div class="form-card-header">
+        <i class="fa-solid fa-user red-icon"></i>
+        <h3>Personal Details</h3>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="firstName" placeholder="Your first name" required>
+        </div>
+        <div class="form-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="lastName" placeholder="Your last name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Gender <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-pill"><input type="radio" name="gender" value="Male" required> 👨 Male</label>
+          <label class="radio-pill"><input type="radio" name="gender" value="Female"> 👩 Female</label>
+          <label class="radio-pill"><input type="radio" name="gender" value="Other"> Other</label>
+          <label class="radio-pill"><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Date of Birth <span class="req">*</span></label>
+          <input type="date" id="dob" required>
+        </div>
+        <div class="form-group">
+          <label>Mobile Number <span class="req">*</span></label>
+          <input type="tel" id="mobile" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email <span class="opt">(Optional)</span></label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>City <span class="req">*</span></label>
+          <input type="text" id="city" placeholder="Your city" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>State <span class="req">*</span></label>
+          <input type="text" id="state" placeholder="Your state" required>
+        </div>
+        <div class="form-group">
+          <label>PIN Code <span class="req">*</span></label>
+          <input type="text" id="pincode" placeholder="6-digit PIN" pattern="[0-9]{6}" maxlength="6" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Address <span class="opt">(Optional)</span></label>
+        <textarea id="address" placeholder="Full address" rows="2"></textarea>
+      </div>
+    </div>
+
+    <!-- RUNNING DETAILS -->
+    <div class="form-card">
+      <div class="form-card-header">
+        <i class="fa-solid fa-person-running red-icon"></i>
+        <h3>Running Details</h3>
+      </div>
+      <div class="form-group">
+        <label>Running Group <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-pill"><input type="radio" name="runningGroup" value="Vasant Kunj Runner (VKR)" required onclick="hideEl('otherGroup')"> VKR</label>
+          <label class="radio-pill"><input type="radio" name="runningGroup" value="Others" onclick="showEl('otherGroup')"> Others</label>
+        </div>
+        <input type="text" id="otherGroup" placeholder="Enter your running group name" style="display:none;margin-top:10px;">
+      </div>
+      <div class="form-group">
+        <label>I am a... <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-pill"><input type="radio" name="runnerType" value="Beginner" required onclick="hideEl('otherRunner')"> 🌱 Beginner</label>
+          <label class="radio-pill"><input type="radio" name="runnerType" value="Short Runner" onclick="hideEl('otherRunner')"> 🏃 Short Runner</label>
+          <label class="radio-pill"><input type="radio" name="runnerType" value="Long Runner" onclick="hideEl('otherRunner')"> 🏅 Long Runner</label>
+          <label class="radio-pill"><input type="radio" name="runnerType" value="Others" onclick="showEl('otherRunner')"> Other</label>
+        </div>
+        <input type="text" id="otherRunner" placeholder="Specify your runner type" style="display:none;margin-top:10px;">
+      </div>
+      <div class="form-group">
+        <label>T-Shirt Size <span class="req">*</span></label>
+        <div class="size-group">
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="XS" required><span>XS</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="S"><span>S</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="M"><span>M</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="L"><span>L</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="XL"><span>XL</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="XXL"><span>XXL</span></label>
+          <label class="size-pill"><input type="radio" name="tshirtSize" value="XXXL"><span>XXXL</span></label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Do you want to join our VKR community?</label>
+        <div class="radio-group">
+          <label class="radio-pill"><input type="radio" name="joinVkr" value="Yes"> ✅ Yes</label>
+          <label class="radio-pill"><input type="radio" name="joinVkr" value="No"> ❌ No</label>
+          <label class="radio-pill"><input type="radio" name="joinVkr" value="Maybe"> 🤔 Maybe</label>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAYMENT -->
+    <div class="form-card payment-card">
+      <div class="form-card-header">
+        <i class="fa-solid fa-indian-rupee-sign red-icon"></i>
+        <h3>Payment Details</h3>
+      </div>
+      <div class="payment-box">
+        <div class="payment-left">
+          <p class="payment-title">UPI / Paytm / GPay</p>
+          <p class="payment-number">8285486858</p>
+          <p class="payment-name">Akshay (VKR)</p>
+          <div class="fee-info">
+            <span>👨 Men: <strong>₹100</strong></span>
+            <span>👩 Women: <strong>₹50</strong></span>
+          </div>
+        </div>
+        <div class="payment-right">
+          <img src="qr.png" alt="QR Code">
+          <p>Scan to Pay</p>
+        </div>
+      </div>
+      <div class="payment-note">
+        <i class="fa-solid fa-circle-info"></i>
+        After payment, fill in your Transaction ID and upload screenshot below.
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Transaction ID <span class="req">*</span></label>
+          <input type="text" id="transactionId" placeholder="UPI Transaction ID" required>
+        </div>
+        <div class="form-group">
+          <label>Payment Screenshot <span class="req">*</span></label>
+          <input type="file" id="paymentScreenshot" accept="image/jpeg,image/png,application/pdf" required>
+          <small>JPG, PNG or PDF accepted</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERMS -->
+    <div class="form-card">
+      <div class="form-card-header">
+        <i class="fa-solid fa-file-contract red-icon"></i>
+        <h3>Terms &amp; Conditions</h3>
+      </div>
+      <div class="terms-list">
+        <label class="check-label">
+          <input type="checkbox" required>
+          I confirm that all information provided is correct and accurate.
+        </label>
+        <label class="check-label">
+          <input type="checkbox" required>
+          I understand that running involves physical activity and I participate at my own risk.
+        </label>
+        <label class="check-label">
+          <input type="checkbox" required>
+          I agree to follow all event rules, guidelines and instructions given by VKR team.
+        </label>
+        <label class="check-label">
+          <input type="checkbox" required>
+          I allow VKR to use event photographs and videos for promotional purposes.
+        </label>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="form-actions">
+      <button type="submit" class="btn-primary btn-submit" id="submitBtn">
+        <i class="fa-solid fa-paper-plane"></i> Submit Registration
+      </button>
+      <button type="reset" class="btn-reset" onclick="resetExtras()">
+        <i class="fa-solid fa-rotate-left"></i> Reset Form
+      </button>
+    </div>
+    <div id="loadingMsg" style="display:none;text-align:center;padding:15px;color:#e63946;font-weight:bold;">
+      ⏳ Submitting your registration, please wait...
+    </div>
+
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="VKR">
+      <div>
+        <span class="footer-name">VASANT KUNJ RUNNER</span>
+        <span class="footer-tag">Fitness • Friendship • Finish Lines</span>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Vasant Kunj Runner (VKR) • All Rights Reserved</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+var SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+function showEl(id){ document.getElementById(id).style.display='block'; }
+function hideEl(id){ document.getElementById(id).style.display='none'; }
+function resetExtras(){
+  hideEl('otherGroup'); hideEl('otherRunner');
+}
+
+async function submitForm(e){
+  e.preventDefault();
+  var gender = document.querySelector('input[name="gender"]:checked');
+  var runningGroup = document.querySelector('input[name="runningGroup"]:checked');
+  var runnerType = document.querySelector('input[name="runnerType"]:checked');
+  var tshirtSize = document.querySelector('input[name="tshirtSize"]:checked');
+  var joinVkr = document.querySelector('input[name="joinVkr"]:checked');
+  if(!gender||!runningGroup||!runnerType||!tshirtSize){
+    alert('Please fill all required fields marked with *');
+    return;
+  }
+  var data = {
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    gender: gender.value,
+    dob: document.getElementById('dob').value,
+    mobile: document.getElementById('mobile').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    city: document.getElementById('city').value.trim(),
+    state: document.getElementById('state').value.trim(),
+    pincode: document.getElementById('pincode').value.trim(),
+    address: document.getElementById('address').value.trim(),
+    runningGroup: runningGroup.value,
+    otherGroup: document.getElementById('otherGroup').value.trim(),
+    runnerType: runnerType.value,
+    otherType: document.getElementById('otherRunner').value.trim(),
+    tshirtSize: tshirtSize.value,
+    joinVkr: joinVkr ? joinVkr.value : 'Not specified',
+    transactionId: document.getElementById('transactionId').value.trim()
+  };
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('loadingMsg').style.display = 'block';
+  try {
+    var res = await fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify(data) });
+    var result = await res.json();
+    if(result.status === 'success'){
+      document.getElementById('formContainer').style.display='none';
+      document.getElementById('successMsg').style.display='block';
+      document.getElementById('regIdDisplay').innerText='🎫 Your Registration ID: '+result.regId;
+      window.scrollTo(0,0);
+    } else {
+      alert('Something went wrong. Please try again or contact 8285486858.');
+      document.getElementById('submitBtn').disabled=false;
+      document.getElementById('loadingMsg').style.display='none';
+    }
+  } catch(err){
+    alert('Network error. Please check your internet and try again.');
+    document.getElementById('submitBtn').disabled=false;
+    document.getElementById('loadingMsg').style.display='none';
+  }
+}
+</script>
+</body>
+</html>
