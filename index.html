@@ -1,407 +1,355 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Vasant Kunj Runner (VKR)</title>
-
+<title>Vasant Kunj Runner — VKR 5K Run & Fun Morning</title>
 <link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <body>
 
-<header>
-
-<div class="logo-section">
-<img src="logo.png" alt="VKR Logo">
-<h2>VASANT KUNJ RUNNER</h2>
-</div>
-
-<nav>
-<a href="#about">About</a>
-<a href="#vision">Vision</a>
-<a href="#team">Team</a>
-<a href="#events">Events</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
-</nav>
-
+<!-- HEADER -->
+<header id="header">
+  <div class="logo-section">
+    <img src="logo.png" alt="VKR Logo">
+    <div class="logo-text">
+      <span class="logo-main">VASANT KUNJ RUNNER</span>
+      <span class="logo-sub">VKR • EST. VASANT KUNJ, NEW DELHI</span>
+    </div>
+  </div>
+  <nav id="mainNav">
+    <a href="#about">About</a>
+    <a href="#event">Event</a>
+    <a href="#includes">Includes</a>
+    <a href="#team">Team</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#partners">Partners</a>
+    <a href="#contact">Contact</a>
+    <a href="register.html" class="nav-cta">Register Now</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
-<!-- HERO SLIDER -->
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slides">
+    <div class="slide active" style="background-image:url('banner1.jpg')"></div>
+    <div class="slide" style="background-image:url('banner2.jpg')"></div>
+    <div class="slide" style="background-image:url('banner3.jpg')"></div>
+    <div class="slide" style="background-image:url('banner4.jpg')"></div>
+    <div class="slide" style="background-image:url('banner5.jpg')"></div>
+    <div class="slide" style="background-image:url('banner6.jpg')"></div>
+    <div class="slide" style="background-image:url('banner7.jpg')"></div>
+    <div class="slide" style="background-image:url('banner8.jpg')"></div>
+    <div class="slide" style="background-image:url('banner9.jpg')"></div>
+    <div class="slide" style="background-image:url('banner10.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 SANJAY VAN, NEW DELHI</div>
+    <h1>VKR 5K RUN<br><span class="hero-accent">&amp; FUN MORNING</span></h1>
+    <p class="hero-tagline">Fitness &bull; Friendship &bull; Finish Lines</p>
+    <div class="hero-meta">
+      <div class="meta-item"><i class="fa-regular fa-calendar"></i> Sunday, 02 August 2026</div>
+      <div class="meta-item"><i class="fa-regular fa-clock"></i> Reporting: 5:20 AM | Run: 6:00 AM</div>
+      <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Gate No. 1, Sanjay Van</div>
+    </div>
+    <div class="hero-actions">
+      <a href="register.html" class="btn-primary">🏃 Register Now — ₹100</a>
+      <a href="#event" class="btn-outline">View Details</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
 
-<section class="hero-slider">
-
-<div class="slide active"
-style="background-image:url('banner1.jpg')"></div>
-
-<div class="slide"
-style="background-image:url('banner2.jpg')"></div>
-
-<div class="slide"
-style="background-image:url('banner3.jpg')"></div>
-
-<div class="slide"
-style="background-image:url('banner4.jpg')"></div>
-
-<div class="slide"
-style="background-image:url('banner5.jpg')"></div>
-
-<div class="slide"
-style="background-image:url('banner6.jpg')"></div>
-
-<div class="hero-content">
-
-<h1>VASANT KUNJ RUNNER</h1>
-
-<p>Fitness • Friendship • Finish Lines</p>
-
-<div>
-
-<a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ"
-target="_blank"
-class="btn">
-
-<i class="fa-brands fa-whatsapp"></i>
-Join VKR
-
-</a>
-
-<a href="https://www.instagram.com/vasant_kunj_runner"
-target="_blank"
-class="btn">
-
-<i class="fa-brands fa-instagram"></i>
-Instagram
-
-</a>
-
-<a href="https://www.facebook.com/share/1Pc8AXGDj5/"
-target="_blank"
-class="btn">
-
-<i class="fa-brands fa-facebook"></i>
-Facebook
-
-</a>
-
-<a href="https://youtube.com/@vasantkunjrunnervkr"
-target="_blank"
-class="btn">
-
-<i class="fa-brands fa-youtube"></i>
-YouTube
-
-</a>
-
-</div>
-
-</div>
-
+<!-- EVENT STATS -->
+<section class="stats-bar">
+  <div class="stat"><span class="stat-num">5K</span><span class="stat-label">Distance</span></div>
+  <div class="stat"><span class="stat-num">6:00</span><span class="stat-label">Start Time AM</span></div>
+  <div class="stat"><span class="stat-num">₹100</span><span class="stat-label">Entry Fee (Men)</span></div>
+  <div class="stat"><span class="stat-num">₹50</span><span class="stat-label">Entry Fee (Women)</span></div>
+  <div class="stat"><span class="stat-num">02 Aug</span><span class="stat-label">Event Date 2026</span></div>
 </section>
 
 <!-- ABOUT -->
-
-<section id="about">
-
-<h2>About VKR</h2>
-
-<div class="card">
-
-<p>
-
-Vasant Kunj Runner (VKR) started as a small group of friends
-who shared a passion for fitness, running and healthy living.
-
-</p>
-
-<br>
-
-<p>
-
-What began as casual evening runs in Vasant Kunj has now grown
-into a community that welcomes runners from all backgrounds.
-
-</p>
-
-<br>
-
-<p>
-
-Our goal is simple:
-Run Together • Stay Fit • Build Friendships
-
-</p>
-
-</div>
-
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-label">WHO WE ARE</div>
+    <h2 class="section-title">About <span class="red">VKR</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Vasant Kunj Runner (VKR) started as a small group of friends who shared a passion for fitness, running and healthy living.</p>
+        <p>What began as casual evening runs in Vasant Kunj has now grown into a thriving community that welcomes runners from all backgrounds, ages and fitness levels.</p>
+        <p>Our goal is simple — <strong>Run Together • Stay Fit • Build Friendships.</strong></p>
+        <div class="about-tags">
+          <span>🏃 Community Running</span>
+          <span>💪 All Fitness Levels</span>
+          <span>🤝 Vasant Kunj</span>
+          <span>🌿 Nature Runs</span>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏆</div>
+        <h3>Our Mission</h3>
+        <p>To create an active running culture in Vasant Kunj and inspire people of all ages to embrace fitness through community running.</p>
+        <br>
+        <p>We organize annual and monthly running events while building a strong, positive fitness community.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- VISION -->
+<!-- EVENT DETAILS -->
+<section id="event" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-label">UPCOMING EVENT</div>
+    <h2 class="section-title">VKR 5K Run <span class="red">&amp; Fun Morning</span></h2>
+    <div class="event-grid">
+      <div class="event-detail-card">
+        <i class="fa-regular fa-calendar red-icon"></i>
+        <h4>Date</h4>
+        <p>Sunday, 02 August 2026</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-solid fa-location-dot red-icon"></i>
+        <h4>Venue</h4>
+        <p>Gate No. 1, Sanjay Van, New Delhi</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-regular fa-clock red-icon"></i>
+        <h4>Timing</h4>
+        <p>Reporting: 5:20 AM<br>Run Starts: 6:00 AM</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-solid fa-road red-icon"></i>
+        <h4>Distance</h4>
+        <p>5 Kilometres</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-solid fa-indian-rupee-sign red-icon"></i>
+        <h4>Entry Fee</h4>
+        <p>Men: ₹100<br>Women: ₹50</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-solid fa-video red-icon"></i>
+        <h4>Media Partner</h4>
+        <p>VS Vlogs (Vikas)</p>
+      </div>
+    </div>
 
-<section id="vision">
-
-<h2>Our Vision</h2>
-
-<div class="card">
-
-<p>
-
-To create an active running culture in Vasant Kunj and inspire
-people of all ages to embrace fitness through community running.
-
-</p>
-
-<br>
-
-<p>
-
-We aim to organize annual and monthly running events while
-building a strong and positive fitness community.
-
-</p>
-
-</div>
-
-</section>
-  <!-- TEAM -->
-
-<section id="team">
-
-<h2>Leadership Team</h2>
-
-<div class="card">
-
-<h3>🏃 Akshay Racer</h3>
-<p><strong>Founder & Community Lead</strong></p>
-
-<br>
-
-<p>
-Founder of Vasant Kunj Runner (VKR) and the driving force behind building a strong running community in Vasant Kunj.
-</p>
-
-<br><hr><br>
-
-<h3>🤝 Ajay Gandas</h3>
-<p><strong>Co-Founder & Community Coordinator</strong></p>
-
-<br>
-
-<p>
-Supported VKR from the beginning and continues to strengthen the community through coordination and support.
-</p>
-
-<br><hr><br>
-
-<h3>📋 Aditya Ojha</h3>
-<p><strong>Operations & Event Coordinator</strong></p>
-
-<br>
-
-<p>
-Supports event planning, execution and smooth management of VKR activities.
-</p>
-
-</div>
-
-<br><br>
-
-<h2>Community Support Team</h2>
-
-<div class="card">
-
-<p>
-
-Vikas Sharma • Naveen Yadav • Rohit Joshi • Shivam Sharma • Manoj Mehlawat • Hari • Nitin • Yash Mehlawat • Sumit Badgujar • Shubham Pandey • Deepanshu Nasa • Sachin • Pawan Rathore • Manish Dahiya • Ravi Bagotiya • Aditya Bagotiya • Brijmohan • Rajesh
-
-</p>
-
-</div>
-
+    <div class="guidelines-box">
+      <h3>⚠️ Important Guidelines</h3>
+      <ul>
+        <li>Reach on time — reporting at 5:20 AM sharp</li>
+        <li>Follow route instructions given by volunteers</li>
+        <li>Respect fellow participants at all times</li>
+        <li>Keep the venue clean — no littering</li>
+        <li>Maintain discipline throughout the event</li>
+        <li>Positive vibes only 😊</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
-<!-- EVENTS -->
+<!-- WHAT'S INCLUDED -->
+<section id="includes" class="section">
+  <div class="section-inner">
+    <div class="section-label">WHAT YOU GET</div>
+    <h2 class="section-title">What's <span class="red">Included</span></h2>
+    <div class="includes-grid">
+      <div class="include-card">
+        <div class="include-icon">🧘</div>
+        <h4>Guided Warm-Up</h4>
+        <p>Warm-up & stretching session before the run</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🏃</div>
+        <h4>5K Run / Walk</h4>
+        <p>Suitable for all fitness levels — beginners welcome!</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🍋</div>
+        <h4>Hydration Support</h4>
+        <p>Fresh lemon water during and after the run</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🎮</div>
+        <h4>Fun Games</h4>
+        <p>Group activities and spot competitions</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🎯</div>
+        <h4>Exciting Challenges</h4>
+        <p>Spot prizes and exciting challenges for all</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🥤</div>
+        <h4>Post-Run Refreshments</h4>
+        <p>Refreshments after the run to recharge</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">📸</div>
+        <h4>Group Photos</h4>
+        <p>Official group photos & memories by VS Vlogs</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon">🌿</div>
+        <h4>Nature Experience</h4>
+        <p>Run through the beautiful Sanjay Van forest</p>
+      </div>
+    </div>
+    <div class="includes-cta">
+      <p>Whether you're a beginner, walker, jogger, or experienced runner — <strong>everyone is welcome!</strong></p>
+      <a href="register.html" class="btn-primary">Register Now — ₹100 / ₹50</a>
+    </div>
+  </div>
+</section>
 
-<section id="events">
-
-<h2>Events</h2>
-
-<div class="card">
-
-<h3>🏅 Annual VKR Community Run</h3>
-
-<br>
-
-<p>
-Our flagship running event bringing together runners from Vasant Kunj and beyond.
-</p>
-
-<br>
-
-<h3>🏃 Monthly Community Run</h3>
-
-<br>
-
-<p>
-Regular community runs to encourage fitness, friendship and consistency.
-</p>
-
-</div>
-
+<!-- TEAM -->
+<section id="team" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-label">THE PEOPLE</div>
+    <h2 class="section-title">Our <span class="red">Team</span></h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">AR</div>
+        <h3>Akshay Racer</h3>
+        <span class="team-role">Founder & Community Lead</span>
+        <p>Founder of VKR and the driving force behind building a strong running community in Vasant Kunj.</p>
+        <a href="tel:8285486858" class="team-contact"><i class="fa-solid fa-phone"></i> 8285486858</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">AG</div>
+        <h3>Ajay Gandas</h3>
+        <span class="team-role">Co-Founder & Community Coordinator</span>
+        <p>Supported VKR from the beginning and continues to strengthen the community through coordination.</p>
+        <a href="tel:9953067473" class="team-contact"><i class="fa-solid fa-phone"></i> 9953067473</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">AO</div>
+        <h3>Aditya Ojha</h3>
+        <span class="team-role">Operations & Event Coordinator</span>
+        <p>Supports event planning, execution and smooth management of all VKR activities.</p>
+      </div>
+    </div>
+    <div class="support-section">
+      <h3>Community Support Team</h3>
+      <div class="support-names">
+        Vikas Sharma &bull; Naveen Yadav &bull; Rohit Joshi &bull; Shivam Sharma &bull; Manoj Mehlawat &bull; Hari &bull; Nitin &bull; Yash Mehlawat &bull; Sumit Badgujar &bull; Shubham Pandey &bull; Deepanshu Nasa &bull; Sachin &bull; Pawan Rathore &bull; Manish Dahiya &bull; Ravi Bagotiya &bull; Aditya Bagotiya &bull; Brijmohan &bull; Rajesh
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="section-inner">
+    <div class="section-label">MOMENTS</div>
+    <h2 class="section-title">VKR <span class="red">Gallery</span></h2>
+    <div class="gallery-coming">
+      <div class="gallery-icon">📸</div>
+      <h3>Photos Coming Soon</h3>
+      <p>100+ photos and videos from VKR runs, events and community activities will be showcased here after the event.</p>
+      <p style="margin-top:10px;">Follow us on Instagram for live updates!</p>
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank" class="btn-outline" style="margin-top:20px;display:inline-block;">
+        <i class="fa-brands fa-instagram"></i> @vasant_kunj_runner
+      </a>
+    </div>
+  </div>
+</section>
 
-<section id="gallery">
-
-<h2>Gallery</h2>
-
-<div class="card">
-
-<p>
-Photos and videos from VKR runs, events and community activities will be showcased here.
-</p>
-
-<br>
-
-<p>
-Coming Soon...
-</p>
-
-</div>
-
+<!-- PARTNERS -->
+<section id="partners" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-label">COLLABORATION</div>
+    <h2 class="section-title">Partners <span class="red">&amp; Sponsors</span></h2>
+    <div class="partners-grid">
+      <div class="partner-info-card">
+        <h3>🎥 Official Media Partner</h3>
+        <p><strong>VS Vlogs</strong> by Vikas</p>
+        <p>Official photography and videography partner for VKR 5K Run & Fun Morning 2026.</p>
+      </div>
+      <div class="partner-info-card">
+        <h3>🤝 Become a Partner</h3>
+        <p>We are open to collaborations with brands, gyms, nutrition companies, and local businesses.</p>
+        <a href="https://wa.me/918285486858" target="_blank" class="btn-partner">
+          <i class="fa-brands fa-whatsapp"></i> Partner With VKR
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
-
-<section id="contact">
-
-<h2>Contact Us</h2>
-
-<div class="card">
-
-<p><strong>📞 Akshay Racer:</strong> 8285486858</p>
-
-<br>
-
-<p><strong>📞 Ajay Gandas:</strong> 9953067473</p>
-
-<br>
-
-<p><strong>📍 Location:</strong> Vasant Kunj, New Delhi</p>
-
-<br>
-
-<p>
-
-<a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank">
-🟢 Join WhatsApp Community
-</a>
-
-</p>
-
-<br>
-
-<p>
-
-<a href="https://www.instagram.com/vasant_kunj_runner" target="_blank">
-📸 Follow us on Instagram
-</a>
-
-</p>
-
-<br>
-
-<p>
-
-<a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank">
-📘 Follow us on Facebook
-</a>
-
-</p>
-
-<br>
-
-<p>
-
-<a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank">
-▶️ Subscribe on YouTube
-</a>
-
-</p>
-
-</div>
-
+<section id="contact" class="section">
+  <div class="section-inner">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title">Contact <span class="red">VKR</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fa-solid fa-phone red-icon"></i>
+        <h4>Call / WhatsApp</h4>
+        <a href="tel:8285486858">Akshay — 8285486858</a>
+        <a href="tel:9953067473">Ajay — 9953067473</a>
+      </div>
+      <div class="contact-card">
+        <i class="fa-solid fa-location-dot red-icon"></i>
+        <h4>Location</h4>
+        <p>Vasant Kunj, New Delhi</p>
+        <p>Event: Sanjay Van, Gate No.1</p>
+      </div>
+      <div class="contact-card">
+        <i class="fa-brands fa-instagram red-icon"></i>
+        <h4>Social Media</h4>
+        <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank">@vasant_kunj_runner</a>
+        <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank">YouTube: VKR</a>
+      </div>
+    </div>
+    <div class="social-row">
+      <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank" class="social-btn whatsapp"><i class="fa-brands fa-whatsapp"></i> Join WhatsApp</a>
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank" class="social-btn instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank" class="social-btn facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+      <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank" class="social-btn youtube"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
-
 <footer>
-
-<p>© 2026 Vasant Kunj Runner (VKR)</p>
-
-<br>
-
-<p>
-Fitness • Friendship • Finish Lines
-</p>
-
-<br>
-
-<a href="https://www.instagram.com/vasant_kunj_runner" target="_blank">
-<i class="fa-brands fa-instagram"></i> Instagram
-</a>
-
-|
-
-<a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank">
-<i class="fa-brands fa-facebook"></i> Facebook
-</a>
-
-|
-
-<a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank">
-<i class="fa-brands fa-youtube"></i> YouTube
-</a>
-
-|
-
-<a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank">
-<i class="fa-brands fa-whatsapp"></i> WhatsApp
-</a>
-
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="logo.png" alt="VKR">
+      <div>
+        <span class="footer-name">VASANT KUNJ RUNNER</span>
+        <span class="footer-tag">Fitness • Friendship • Finish Lines</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#event">Event</a>
+      <a href="#team">Team</a>
+      <a href="register.html">Register</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p class="footer-copy">© 2026 Vasant Kunj Runner (VKR) • All Rights Reserved</p>
+  </div>
 </footer>
 
-<!-- AUTO IMAGE SLIDER -->
-
-<script>
-
-const slides = document.querySelectorAll('.slide');
-
-let current = 0;
-
-setInterval(() => {
-
-slides[current].classList.remove('active');
-
-current++;
-
-if(current >= slides.length){
-current = 0;
-}
-
-slides[current].classList.add('active');
-
-}, 5000);
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
