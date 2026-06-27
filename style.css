@@ -48,7 +48,7 @@ header {
 header.scrolled { padding:8px 40px; }
 
 .logo-section { display:flex; align-items:center; gap:14px; }
-.logo-section img { width:58px; height:58px; object-fit:contain; }
+.logo-section img { width:80px; height:80px; object-fit:contain; }
 .logo-text { display:flex; flex-direction:column; }
 .logo-main { font-size:17px; font-weight:900; letter-spacing:1.5px; color:#fff; }
 .logo-sub  { font-size:10px; color:var(--yellow); letter-spacing:1px; font-weight:600; white-space:nowrap; }
@@ -723,6 +723,6 @@ footer { background:#000; border-top:2px solid var(--orange); padding:40px 5%; }
 @media(max-width:480px){
   .logo-main { font-size:14px; letter-spacing:.5px; }
   .logo-sub  { display:none; }
-  .logo-section img { width:45px; height:45px; }
+  .logo-section img { width:62px; height:62px; }
   header { padding:8px 15px; }
 }
