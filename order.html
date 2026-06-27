@@ -12,7 +12,7 @@
 <header id="header">
   <div class="logo-section">
     <img src="vkr_logo.png" alt="VKR Logo">
-    <div class="logo-text">
+    <div class="logo-divider"></div><div class="logo-text">
       <span class="logo-main">VASANT KUNJ RUNNERS</span>
       <span class="logo-sub">VKR • VASANT KUNJ, NEW DELHI</span>
     </div>
@@ -227,16 +227,21 @@ async function submitOrder(e){
   document.getElementById('loadingMsg').style.display = 'block';
 
   try {
-    await fetch(SCRIPT_URL, {
+    var res = await fetch(SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors',
       body: JSON.stringify(data)
     });
-    // no-cors me response nahi milta — direct success dikhate hain
-    document.getElementById('orderContainer').style.display = 'none';
-    document.getElementById('orderSuccess').style.display = 'block';
-    document.getElementById('orderIdDisplay').innerText = '📦 Order placed! Our team will contact you soon.';
-    window.scrollTo(0, 0);
+    var result = await res.json();
+    if(result.status === 'success'){
+      document.getElementById('orderContainer').style.display = 'none';
+      document.getElementById('orderSuccess').style.display = 'block';
+      document.getElementById('orderIdDisplay').innerText = '📦 Order ID: ' + result.regId;
+      window.scrollTo(0, 0);
+    } else {
+      alert('Something went wrong. Please try again or WhatsApp us at 8285486858.');
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('loadingMsg').style.display = 'none';
+    }
   } catch(err){
     alert('Network error. Please check your internet and try again. Or WhatsApp us at 8285486858.');
     document.getElementById('submitBtn').disabled = false;
