@@ -48,11 +48,11 @@ header {
 header.scrolled { padding:8px 40px; }
 
 .logo-section { display:flex; align-items:center; gap:0; }
-.logo-section img { width:85px; height:85px; object-fit:contain; }
+.logo-section img { width:75px; height:75px; object-fit:contain; }
 .logo-divider {
   width:2px; height:50px;
   background:rgba(255,255,255,0.25);
-  margin:0 4px;
+  margin:0 12px;
   border-radius:2px;
 }
 .logo-text { display:flex; flex-direction:column; }
@@ -100,7 +100,8 @@ nav a:hover { color:#fff; background:rgba(98,114,212,0.15); }
   border:1px solid rgba(232,66,10,0.5);
   color:var(--yellow); font-size:12px; font-weight:700;
   letter-spacing:2px; padding:6px 18px; border-radius:50px;
-  margin-bottom:20px;
+  margin-bottom:20px; white-space:nowrap;
+  max-width:90vw; overflow:hidden; text-overflow:ellipsis;
 }
 .hero-content h1 {
   font-size:clamp(38px,7vw,80px); font-weight:900;
