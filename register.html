@@ -12,9 +12,9 @@
 <!-- HEADER -->
 <header id="header">
   <div class="logo-section">
-    <img src="logo.png" alt="VKR Logo">
+    <img src="vkr_logo.png" alt="VKR Logo">
     <div class="logo-text">
-      <span class="logo-main">VASANT KUNJ RUNNER</span>
+      <span class="logo-main">VASANT KUNJ RUNNERS</span>
       <span class="logo-sub">VKR • EST. VASANT KUNJ, NEW DELHI</span>
     </div>
   </div>
@@ -251,10 +251,9 @@
         <i class="fa-solid fa-rotate-left"></i> Reset Form
       </button>
     </div>
-    <div id="loadingMsg" style="display:none;text-align:center;padding:15px;color:#e63946;font-weight:bold;">
+    <div id="loadingMsg" style="display:none;text-align:center;padding:15px;color:var(--accent);font-weight:bold;">
       ⏳ Submitting your registration, please wait...
     </div>
-
   </form>
 </div>
 
@@ -262,25 +261,24 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">
-      <img src="logo.png" alt="VKR">
+      <img src="vkr_logo.png" alt="VKR">
       <div>
-        <span class="footer-name">VASANT KUNJ RUNNER</span>
+        <span class="footer-name">VASANT KUNJ RUNNERS</span>
         <span class="footer-tag">Fitness • Friendship • Finish Lines</span>
       </div>
     </div>
-    <p class="footer-copy">© 2026 Vasant Kunj Runner (VKR) • All Rights Reserved</p>
+    <p class="footer-copy">© 2026 Vasant Kunj Runners (VKR) • All Rights Reserved</p>
   </div>
 </footer>
 
 <script src="script.js"></script>
 <script>
-var SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+// ✅ APNA GOOGLE APPS SCRIPT URL YAHAN DAALEIN
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwvwbIBSKIn4HdX8x2EOthtq7QTLC1pu602RzbabB-bM6P7CAchcUwXWJcbwqMc_L_i/exec";
 
-function showEl(id){ document.getElementById(id).style.display='block'; }
-function hideEl(id){ document.getElementById(id).style.display='none'; }
-function resetExtras(){
-  hideEl('otherGroup'); hideEl('otherRunner');
-}
+function showEl(id){ var el=document.getElementById(id); if(el) el.style.display='block'; }
+function hideEl(id){ var el=document.getElementById(id); if(el) el.style.display='none'; }
+function resetExtras(){ hideEl('otherGroup'); hideEl('otherRunner'); }
 
 async function submitForm(e){
   e.preventDefault();
@@ -289,10 +287,12 @@ async function submitForm(e){
   var runnerType = document.querySelector('input[name="runnerType"]:checked');
   var tshirtSize = document.querySelector('input[name="tshirtSize"]:checked');
   var joinVkr = document.querySelector('input[name="joinVkr"]:checked');
-  if(!gender||!runningGroup||!runnerType||!tshirtSize){
+
+  if(!gender || !runningGroup || !runnerType || !tshirtSize){
     alert('Please fill all required fields marked with *');
     return;
   }
+
   var data = {
     firstName: document.getElementById('firstName').value.trim(),
     lastName: document.getElementById('lastName').value.trim(),
@@ -312,25 +312,25 @@ async function submitForm(e){
     joinVkr: joinVkr ? joinVkr.value : 'Not specified',
     transactionId: document.getElementById('transactionId').value.trim()
   };
+
   document.getElementById('submitBtn').disabled = true;
   document.getElementById('loadingMsg').style.display = 'block';
+
   try {
-    var res = await fetch(SCRIPT_URL, { method:'POST', body: JSON.stringify(data) });
-    var result = await res.json();
-    if(result.status === 'success'){
-      document.getElementById('formContainer').style.display='none';
-      document.getElementById('successMsg').style.display='block';
-      document.getElementById('regIdDisplay').innerText='🎫 Your Registration ID: '+result.regId;
-      window.scrollTo(0,0);
-    } else {
-      alert('Something went wrong. Please try again or contact 8285486858.');
-      document.getElementById('submitBtn').disabled=false;
-      document.getElementById('loadingMsg').style.display='none';
-    }
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify(data)
+    });
+    // no-cors me response nahi milta — direct success dikhate hain
+    document.getElementById('formContainer').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('regIdDisplay').innerText = '🎫 Registration submitted! Team will confirm soon.';
+    window.scrollTo(0, 0);
   } catch(err){
-    alert('Network error. Please check your internet and try again.');
-    document.getElementById('submitBtn').disabled=false;
-    document.getElementById('loadingMsg').style.display='none';
+    alert('Network error. Please check your internet and try again. Or WhatsApp us at 8285486858.');
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('loadingMsg').style.display = 'none';
   }
 }
 </script>
