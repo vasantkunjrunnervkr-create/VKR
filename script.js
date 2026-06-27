@@ -32,7 +32,6 @@ function toggleMenu(){
   var nav = document.getElementById('mainNav');
   if(nav) nav.classList.toggle('open');
 }
-
 document.addEventListener('DOMContentLoaded', function(){
   var navLinks = document.querySelectorAll('nav a');
   navLinks.forEach(function(link){
