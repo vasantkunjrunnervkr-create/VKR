@@ -88,14 +88,26 @@
     <h2 class="section-title">About <span class="red">VKR</span></h2>
     <div class="about-grid">
       <div class="about-text">
-        <p>Vasant Kunj Runners (VKR) started as a small group of friends who shared a passion for fitness, running and healthy living.</p>
-        <p>What began as casual morning runs in Vasant Kunj has now grown into a vibrant community that welcomes runners of all ages and fitness levels.</p>
-        <p>Our goal is simple — <strong>Run Together • Stay Fit • Build Friendships.</strong></p>
+        <p>We started VKR because we felt that running was slowly becoming more about social media, networking, and showing up than actually running.</p>
+        <p>That's not what we believe in.</p>
+        <p>We believe running is built on <strong>discipline, consistency, and hard work.</strong> Whether you run your first 2 km or your tenth marathon, the effort is the same. Every runner deserves respect.</p>
+        <p>We don't care what shoes you wear, what watch is on your wrist, or how many followers you have. If you are willing to put in the work, you'll always belong here.</p>
+        <p>VKR is simply a community where <strong>runners motivate runners.</strong></p>
         <div class="about-tags">
           <span>🏃 Community Running</span>
           <span>💪 All Fitness Levels</span>
           <span>🤝 Vasant Kunj</span>
           <span>🌿 Nature Runs</span>
+        </div>
+        <button class="stand-for-btn" onclick="toggleStandFor()">
+          <i class="fa-solid fa-shield-halved"></i> What We Stand For
+        </button>
+        <div class="stand-for-box" id="standForBox">
+          <p>We come from a sports background ourselves, so we understand what training really feels like — the early mornings, the missed sessions, the pain, the consistency, and the satisfaction of getting better.</p>
+          <br>
+          <p>We may organize events and create merchandise as we grow, but our purpose is not to build a brand around hype. Our purpose is to build a community that puts running first.</p>
+          <br>
+          <p><strong style="color:var(--yellow)">No show-off. No politics. No pressure. Just running.</strong></p>
         </div>
       </div>
       <div class="about-card">
@@ -290,12 +302,24 @@
     <h2 class="section-title">VKR <span class="red">Store</span></h2>
     <p class="store-sub">Wear your passion. Every purchase supports the VKR running community.</p>
     <div class="store-grid">
+
+      <!-- T-SHIRT -->
       <div class="product-card">
         <div class="product-img-wrap">
-          <img src="tshirt1.jpg" alt="VKR Running T-Shirt" class="product-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-          <div class="product-placeholder" style="display:none">
-            <i class="fa-solid fa-shirt"></i>
-            <span>Photo Coming Soon</span>
+          <!-- T-Shirt Image Slider -->
+          <div class="tshirt-slider" id="tshirtSlider">
+            <div class="tslide active"><img src="tshirt1.jpg" alt="VKR T-Shirt Front" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt2.jpg" alt="VKR T-Shirt Back" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt3.jpg" alt="VKR T-Shirt Sample 3" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt4.jpg" alt="VKR T-Shirt Sample 4" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+          <button class="tslider-btn tslider-prev" onclick="tSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="tslider-btn tslider-next" onclick="tSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+          <div class="tslider-dots" id="tsliderDots">
+            <span class="tdot active" onclick="tGoTo(0)"></span>
+            <span class="tdot" onclick="tGoTo(1)"></span>
+            <span class="tdot" onclick="tGoTo(2)"></span>
+            <span class="tdot" onclick="tGoTo(3)"></span>
           </div>
           <div class="product-badge">NEW</div>
         </div>
@@ -303,7 +327,7 @@
           <h3>VKR Running T-Shirt</h3>
           <p class="product-desc">Official VKR dry-fit running t-shirt. Lightweight, breathable and perfect for your morning runs.</p>
           <div class="product-sizes">
-            <span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span>
+            <span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span><span>XXXL</span>
           </div>
           <div class="product-footer">
             <span class="product-price">₹399</span>
@@ -311,6 +335,55 @@
           </div>
         </div>
       </div>
+
+      <!-- VKR CAP -->
+      <div class="product-coming">
+        <div class="coming-placeholder">
+          <i class="fa-solid fa-hat-cowboy"></i>
+          <span>COMING SOON</span>
+        </div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Cap</h3>
+          <p class="product-desc">Official VKR running cap. Stay cool and represent the community on every run.</p>
+          <div class="product-footer">
+            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VKR SHAKER BOTTLE -->
+      <div class="product-coming">
+        <div class="coming-placeholder">
+          <i class="fa-solid fa-bottle-water"></i>
+          <span>COMING SOON</span>
+        </div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Shaker Bottle</h3>
+          <p class="product-desc">Official VKR shaker bottle. Hydrate right, run right — built for runners.</p>
+          <div class="product-footer">
+            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VKR WRISTBAND -->
+      <div class="product-coming">
+        <div class="coming-placeholder">
+          <i class="fa-solid fa-hand-fist"></i>
+          <span>COMING SOON</span>
+        </div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Sweat Wristband</h3>
+          <p class="product-desc">Official VKR sweat wristband. Keep the sweat off and the energy high during your runs.</p>
+          <div class="product-footer">
+            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="store-note">
       <i class="fa-solid fa-truck"></i>
