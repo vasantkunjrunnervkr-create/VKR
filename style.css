@@ -48,11 +48,11 @@ header {
 header.scrolled { padding:8px 40px; }
 
 .logo-section { display:flex; align-items:center; gap:0; }
-.logo-section img { width:95px; height:95px; object-fit:contain; }
+.logo-section img { width:75px; height:75px; object-fit:contain; }
 .logo-divider {
   width:2px; height:50px;
   background:rgba(255,255,255,0.25);
-  margin:0 6px;
+  margin:0 12px;
   border-radius:2px;
 }
 .logo-text { display:flex; flex-direction:column; }
@@ -99,12 +99,11 @@ nav a:hover { color:#fff; background:rgba(98,114,212,0.15); }
   background:rgba(232,66,10,0.18);
   border:1px solid rgba(232,66,10,0.5);
   color:var(--yellow); font-size:12px; font-weight:700;
-  letter-spacing:2px; padding:6px 18px; border-radius:50px;
-  margin-bottom:20px; max-width:90vw;
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  letter-spacing:1px; padding:6px 16px; border-radius:50px;
+  margin-bottom:20px; max-width:92vw; word-break:break-word;
 }
 @media(max-width:480px){
-  .hero-badge { font-size:10px; letter-spacing:1px; padding:5px 12px; }
+  .hero-badge { font-size:11px; letter-spacing:0.3px; padding:5px 12px; }
 }
 .hero-content h1 {
   font-size:clamp(38px,7vw,80px); font-weight:900;
@@ -731,9 +730,9 @@ footer { background:#000; border-top:2px solid var(--orange); padding:40px 5%; }
   .lightbox-next { right:8px; }
 }
 @media(max-width:480px){
-  .logo-main { font-size:13px; letter-spacing:.5px; }
-  .logo-sub  { display:none; }
-  .logo-section img { width:65px; height:65px; }
-  .logo-divider { height:45px; margin:0 10px; }
-  header { padding:8px 15px; }
+  .logo-main { font-size:12px; letter-spacing:.3px; white-space:nowrap; }
+  .logo-sub  { font-size:8.5px; letter-spacing:0px; white-space:nowrap; }
+  .logo-section img { width:55px; height:55px; }
+  .logo-divider { height:38px; margin:0 8px; }
+  header { padding:6px 12px; }
 }
