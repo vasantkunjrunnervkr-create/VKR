@@ -196,7 +196,7 @@
 <script src="script.js"></script>
 <script>
 // ✅ APNA GOOGLE APPS SCRIPT URL YAHAN DAALEIN
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6v_V3Xu4F_kqdyJVj2etEeQXYKBjx5b4mqO05xAQl6MOWlCAqA9AKwxEuJxdM6jPW/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx63Mx9pjCS3elsVLzk-1A5HzXYQ1xYi9E96olsRZMq2ZLzPNiJuhMg60P5y_g4VeEP/exec";
 
 function updateTotal(){
   var qty = parseInt(document.getElementById('quantity').value) || 1;
@@ -223,29 +223,61 @@ async function submitOrder(e){
     transactionId: document.getElementById('transactionId').value.trim()
   };
 
+  var screenshotFile = document.getElementById('paymentScreenshot').files[0];
+
   document.getElementById('submitBtn').disabled = true;
   document.getElementById('loadingMsg').style.display = 'block';
 
-  try {
-    var res = await fetch(SCRIPT_URL, {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
-    var result = await res.json();
-    if(result.status === 'success'){
-      document.getElementById('orderContainer').style.display = 'none';
-      document.getElementById('orderSuccess').style.display = 'block';
-      document.getElementById('orderIdDisplay').innerText = '📦 Order ID: ' + result.regId;
-      window.scrollTo(0, 0);
-    } else {
-      alert('Something went wrong. Please try again or WhatsApp us at 8285486858.');
-      document.getElementById('submitBtn').disabled = false;
-      document.getElementById('loadingMsg').style.display = 'none';
-    }
-  } catch(err){
-    alert('Network error. Please check your internet and try again. Or WhatsApp us at 8285486858.');
-    document.getElementById('submitBtn').disabled = false;
-    document.getElementById('loadingMsg').style.display = 'none';
+  function submitWithScreenshot(base64, mime, ext) {
+    var data = {
+      type: 'order',
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName: document.getElementById('lastName').value.trim(),
+      mobile: document.getElementById('mobile').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      tshirtSize: size.value,
+      quantity: qty,
+      totalAmount: '₹' + (parseInt(qty)*399),
+      address: document.getElementById('address').value.trim(),
+      notes: document.getElementById('notes').value.trim(),
+      transactionId: document.getElementById('transactionId').value.trim(),
+      screenshotBase64: base64,
+      screenshotMime: mime,
+      screenshotExt: ext
+    };
+
+    fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) })
+      .then(function(res){ return res.json(); })
+      .then(function(result){
+        if(result.status === 'success'){
+          document.getElementById('orderContainer').style.display = 'none';
+          document.getElementById('orderSuccess').style.display = 'block';
+          document.getElementById('orderIdDisplay').innerText = '📦 Order ID: ' + result.regId;
+          window.scrollTo(0, 0);
+        } else {
+          alert('Something went wrong. Please try again or WhatsApp us at 8285486858.');
+          document.getElementById('submitBtn').disabled = false;
+          document.getElementById('loadingMsg').style.display = 'none';
+        }
+      })
+      .catch(function(err){
+        alert('Network error. Please check your internet and try again.');
+        document.getElementById('submitBtn').disabled = false;
+        document.getElementById('loadingMsg').style.display = 'none';
+      });
+  }
+
+  if (screenshotFile) {
+    var reader = new FileReader();
+    reader.onload = function(ev) {
+      var base64 = ev.target.result.split(',')[1];
+      var mime = screenshotFile.type;
+      var ext = screenshotFile.name.split('.').pop();
+      submitWithScreenshot(base64, mime, ext);
+    };
+    reader.readAsDataURL(screenshotFile);
+  } else {
+    submitWithScreenshot('', '', '');
   }
 }
 </script>
