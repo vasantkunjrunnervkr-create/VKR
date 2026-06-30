@@ -6,6 +6,7 @@
 <title>Register — VKR 5K Run & Fun Morning</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 
@@ -182,37 +183,16 @@
     <div class="form-card payment-card">
       <div class="form-card-header">
         <i class="fa-solid fa-indian-rupee-sign red-icon"></i>
-        <h3>Payment Details</h3>
+        <h3>Payment</h3>
       </div>
-      <div class="payment-box">
-        <div class="payment-left">
-          <p class="payment-title">UPI / Paytm / GPay</p>
-          <p class="payment-number">8285486858</p>
-          <p class="payment-name">Akshay (VKR)</p>
-          <div class="fee-info">
-            <span>👨 Men: <strong>₹100</strong></span>
-            <span>👩 Women: <strong>₹50</strong></span>
-          </div>
-        </div>
-        <div class="payment-right">
-          <img src="qr.png" alt="QR Code">
-          <p>Scan to Pay</p>
-        </div>
+      <div style="background:var(--dark3);border-radius:10px;padding:20px;text-align:center;">
+        <p style="color:#999;font-size:13px;margin-bottom:8px;">Amount to Pay</p>
+        <p id="amountDisplay" style="color:var(--accent);font-size:32px;font-weight:900;margin:0;">Select Gender First</p>
+        <p style="color:#777;font-size:12px;margin-top:8px;">Men: ₹100 &nbsp;•&nbsp; Women: ₹50</p>
       </div>
-      <div class="payment-note">
+      <div class="payment-note" style="margin-top:18px;">
         <i class="fa-solid fa-circle-info"></i>
-        After payment, fill in your Transaction ID and upload screenshot below.
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Transaction ID <span class="req">*</span></label>
-          <input type="text" id="transactionId" placeholder="UPI Transaction ID" required>
-        </div>
-        <div class="form-group">
-          <label>Payment Screenshot <span class="req">*</span></label>
-          <input type="file" id="paymentScreenshot" accept="image/jpeg,image/png,application/pdf" required>
-          <small>JPG, PNG or PDF accepted</small>
-        </div>
+        Fill all details above, accept terms below, then click "Pay & Register" to complete secure payment via Razorpay.
       </div>
     </div>
 
@@ -245,14 +225,14 @@
     <!-- BUTTONS -->
     <div class="form-actions">
       <button type="submit" class="btn-primary btn-submit" id="submitBtn">
-        <i class="fa-solid fa-paper-plane"></i> Submit Registration
+        <i class="fa-solid fa-indian-rupee-sign"></i> Pay &amp; Register
       </button>
       <button type="reset" class="btn-reset" onclick="resetExtras()">
         <i class="fa-solid fa-rotate-left"></i> Reset Form
       </button>
     </div>
     <div id="loadingMsg" style="display:none;text-align:center;padding:15px;color:var(--accent);font-weight:bold;">
-      ⏳ Submitting your registration, please wait...
+      ⏳ Processing, please wait...
     </div>
   </form>
 </div>
@@ -274,11 +254,35 @@
 <script src="script.js"></script>
 <script>
 // ✅ APNA GOOGLE APPS SCRIPT URL YAHAN DAALEIN
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxcJgUNxixyaW0Y2d--8El4Z5VNJxWFu2PJv5KUdy9ILH7a-dIY5DC_uJV0twG_lwro/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwlGMDJWHvlRQHtrMFlPVNeaQ_ZrW8-FWfjfdCOfNMQsy8COrqHSn7Y_xwn-sfZueQ/exec";
 
 function showEl(id){ var el=document.getElementById(id); if(el) el.style.display='block'; }
 function hideEl(id){ var el=document.getElementById(id); if(el) el.style.display='none'; }
 function resetExtras(){ hideEl('otherGroup'); hideEl('otherRunner'); }
+
+// Gender select hone par amount update karo
+document.addEventListener('DOMContentLoaded', function(){
+  var genderRadios = document.querySelectorAll('input[name="gender"]');
+  genderRadios.forEach(function(radio){
+    radio.addEventListener('change', updateAmountDisplay);
+  });
+});
+
+function getAmount(){
+  var gender = document.querySelector('input[name="gender"]:checked');
+  if(!gender) return 0;
+  return (gender.value === 'Female') ? 50 : 100;
+}
+
+function updateAmountDisplay(){
+  var amount = getAmount();
+  var display = document.getElementById('amountDisplay');
+  if(amount > 0){
+    display.innerText = '₹' + amount;
+  } else {
+    display.innerText = 'Select Gender First';
+  }
+}
 
 async function submitForm(e){
   e.preventDefault();
@@ -293,63 +297,103 @@ async function submitForm(e){
     return;
   }
 
-  var screenshotFile = document.getElementById('paymentScreenshot').files[0];
+  var amount = getAmount();
+  if(amount <= 0){
+    alert('Please select gender to calculate fee.');
+    return;
+  }
+
+  var formData = {
+    firstName: document.getElementById('firstName').value.trim(),
+    lastName: document.getElementById('lastName').value.trim(),
+    gender: gender.value,
+    dob: document.getElementById('dob').value,
+    mobile: document.getElementById('mobile').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    city: document.getElementById('city').value.trim(),
+    state: document.getElementById('state').value.trim(),
+    pincode: document.getElementById('pincode').value.trim(),
+    address: document.getElementById('address').value.trim(),
+    runningGroup: runningGroup.value,
+    otherGroup: document.getElementById('otherGroup').value.trim(),
+    runnerType: runnerType.value,
+    otherType: document.getElementById('otherRunner').value.trim(),
+    tshirtSize: tshirtSize.value,
+    joinVkr: joinVkr ? joinVkr.value : 'Not specified',
+    amount: amount
+  };
 
   document.getElementById('submitBtn').disabled = true;
   document.getElementById('loadingMsg').style.display = 'block';
+  document.getElementById('loadingMsg').innerText = '⏳ Creating payment order, please wait...';
 
-  // Screenshot base64 mein convert karo
-  function submitWithScreenshot(base64, mime, ext) {
-    var data = {
-      firstName: document.getElementById('firstName').value.trim(),
-      lastName: document.getElementById('lastName').value.trim(),
-      gender: gender.value,
-      dob: document.getElementById('dob').value,
-      mobile: document.getElementById('mobile').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      city: document.getElementById('city').value.trim(),
-      state: document.getElementById('state').value.trim(),
-      pincode: document.getElementById('pincode').value.trim(),
-      address: document.getElementById('address').value.trim(),
-      runningGroup: runningGroup.value,
-      otherGroup: document.getElementById('otherGroup').value.trim(),
-      runnerType: runnerType.value,
-      otherType: document.getElementById('otherRunner').value.trim(),
-      tshirtSize: tshirtSize.value,
-      joinVkr: joinVkr ? joinVkr.value : 'Not specified',
-      transactionId: document.getElementById('transactionId').value.trim(),
-      screenshotBase64: base64,
-      screenshotMime: mime,
-      screenshotExt: ext
+  try {
+    // Step 1: Razorpay order banao backend se
+    var orderRes = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'createOrder', amount: amount })
+    });
+    var orderData = await orderRes.json();
+
+    if(orderData.status !== 'success'){
+      throw new Error('Order creation failed');
+    }
+
+    // Step 2: Razorpay checkout kholo
+    var options = {
+      key: orderData.keyId,
+      amount: orderData.amount,
+      currency: "INR",
+      name: "Vasant Kunj Runners",
+      description: "VKR 5KM Run Registration",
+      order_id: orderData.orderId,
+      handler: function(response){
+        formData.razorpayPaymentId = response.razorpay_payment_id;
+        document.getElementById('loadingMsg').innerText = '⏳ Payment successful! Saving your registration...';
+        finalizeRegistration(formData);
+      },
+      modal: {
+        ondismiss: function(){
+          document.getElementById('submitBtn').disabled = false;
+          document.getElementById('loadingMsg').style.display = 'none';
+        }
+      },
+      prefill: {
+        name: formData.firstName + " " + formData.lastName,
+        email: formData.email,
+        contact: formData.mobile
+      },
+      theme: { color: "#E8420A" }
     };
 
-    fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
-      .then(function(){
-        document.getElementById('formContainer').style.display = 'none';
-        document.getElementById('successMsg').style.display = 'block';
-        document.getElementById('regIdDisplay').innerText = '🎫 Registration submitted! Our team will confirm soon.';
-        window.scrollTo(0, 0);
-      })
-      .catch(function(err){
-        alert('Network error. Please check your internet and try again.');
-        document.getElementById('submitBtn').disabled = false;
-        document.getElementById('loadingMsg').style.display = 'none';
-      });
-  }
+    var rzp = new Razorpay(options);
+    rzp.on('payment.failed', function(response){
+      alert('Payment failed. Please try again or contact 8285486858.');
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('loadingMsg').style.display = 'none';
+    });
+    rzp.open();
 
-  if (screenshotFile) {
-    var reader = new FileReader();
-    reader.onload = function(ev) {
-      var base64Full = ev.target.result;
-      var base64 = base64Full.split(',')[1];
-      var mime = screenshotFile.type;
-      var ext = screenshotFile.name.split('.').pop();
-      submitWithScreenshot(base64, mime, ext);
-    };
-    reader.readAsDataURL(screenshotFile);
-  } else {
-    submitWithScreenshot('', '', '');
+  } catch(err){
+    alert('Something went wrong. Please try again or contact 8285486858.');
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('loadingMsg').style.display = 'none';
   }
+}
+
+function finalizeRegistration(formData){
+  fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(formData) })
+    .then(function(){
+      document.getElementById('formContainer').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'block';
+      document.getElementById('regIdDisplay').innerText = '🎫 Payment successful! Registration confirmed.';
+      window.scrollTo(0, 0);
+    })
+    .catch(function(){
+      alert('Payment successful but there was an issue saving data. Please contact 8285486858 with your payment details.');
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('loadingMsg').style.display = 'none';
+    });
 }
 </script>
 </body>
