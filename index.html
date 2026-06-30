@@ -29,26 +29,64 @@
     <a href="#contact">Contact</a>
     <a href="register.html" class="nav-cta">Register Now</a>
   </nav>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-slides">
-    <div class="slide active" style="background-image:url('banner1.jpg')"></div>
-    <div class="slide" style="background-image:url('banner2.jpg')"></div>
-    <div class="slide" style="background-image:url('banner3.jpg')"></div>
-    <div class="slide" style="background-image:url('banner4.jpg')"></div>
-    <div class="slide" style="background-image:url('banner5.jpg')"></div>
-    <div class="slide" style="background-image:url('banner6.jpg')"></div>
-    <div class="slide" style="background-image:url('banner7.jpg')"></div>
-    <div class="slide" style="background-image:url('banner8.jpg')"></div>
-    <div class="slide" style="background-image:url('banner9.jpg')"></div>
-    <div class="slide" style="background-image:url('banner10.jpg')"></div>
+  <div class="header-right">
+    <a href="#store" class="store-icon-btn" title="VKR Store"><i class="fa-solid fa-bag-shopping"></i></a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-  <div class="hero-overlay"></div>
+<section class="hero">
+  <!-- Title above image (mobile only) -->
+  <div class="hero-title-top">
+    <h1>VKR 5KM RUN &amp; <span class="hero-accent">FUN MORNING</span></h1>
+  </div>
+
+  <div class="hero-image-wrap">
+    <div class="hero-slides">
+      <div class="slide active" style="background-image:url('banner1.jpg')"></div>
+      <div class="slide" style="background-image:url('banner2.jpg')"></div>
+      <div class="slide" style="background-image:url('banner3.jpg')"></div>
+      <div class="slide" style="background-image:url('banner4.jpg')"></div>
+      <div class="slide" style="background-image:url('banner5.jpg')"></div>
+      <div class="slide" style="background-image:url('banner6.jpg')"></div>
+      <div class="slide" style="background-image:url('banner7.jpg')"></div>
+      <div class="slide" style="background-image:url('banner8.jpg')"></div>
+      <div class="slide" style="background-image:url('banner9.jpg')"></div>
+      <div class="slide" style="background-image:url('banner10.jpg')"></div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <!-- Top of image: badge only -->
+    <div class="hero-img-top">
+      <div class="hero-badge">🌿 SANJAY VAN, NEW DELHI</div>
+    </div>
+
+    <!-- Bottom of image: tagline + socials only -->
+    <div class="hero-img-bottom">
+      <p class="hero-tagline">Fitness &bull; Friendship &bull; Finish Lines</p>
+      <div class="hero-socials">
+        <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content below image (mobile only) -->
+  <div class="hero-content-bottom">
+    <div class="hero-meta">
+      <div class="meta-item"><i class="fa-regular fa-calendar"></i> Sunday, 02 August 2026</div>
+      <div class="meta-item"><i class="fa-regular fa-clock"></i> Reporting: 5:20 AM | Run: 6:00 AM</div>
+      <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Gate No. 1, Sanjay Van</div>
+    </div>
+    <div class="hero-actions">
+      <a href="register.html" class="btn-primary">🏃 Register Now</a>
+      <a href="#event" class="btn-outline">View Details</a>
+    </div>
+  </div>
+
+  <!-- Desktop original content (hidden on mobile) -->
   <div class="hero-content">
     <div class="hero-badge">🌿 SANJAY VAN, NEW DELHI</div>
     <h1>VKR 5KM RUN<br><span class="hero-accent">&amp; FUN MORNING</span></h1>
@@ -200,7 +238,7 @@
         </div>
         <h3>Ajay Gandas</h3>
         <span class="team-role">Co-Founder &amp; Community Coordinator</span>
-        <p>Supporting VKR since day one with coordination and event assistance.</p>
+        <p>Has supported VKR from day one and continues to strengthen the community through coordination and support.</p>
         <a href="tel:9953067473" class="team-contact"><i class="fa-solid fa-phone"></i> 9953067473</a>
       </div>
       <div class="team-card">
@@ -222,7 +260,7 @@
         </div>
         <h4>Manoj Mehlawat</h4>
         <span class="team-role">Sports Activity Expert</span>
-        <p>Helps organize fun fitness and group activities during VKR events.</p>
+        <p>(M.P.Ed.) Helps organize fun fitness and group activities during VKR events.</p>
       </div>
       <div class="support-card">
         <div class="support-avatar-wrap">
@@ -256,7 +294,7 @@
     <div class="support-section">
       <h3>Community Support Team</h3>
       <div class="support-names">
-        Manish Dahiya &bull; Shivam Sharma &bull; Hari &bull; Nitin &bull; Yash Mehlawat &bull; Sumit Badgujar &bull; Shubham Pandey &bull; Deepanshu Nasa &bull; Sachin &bull; Pawan Rathore &bull; Ravi Bagotiya &bull; Aditya Bagotiya &bull; Brijmohan &bull; Rajesh
+        Shivam Sharma &bull; Hari &bull; Nitin &bull; Yash Mehlawat &bull; Sumit Badgujar &bull; Shubham Pandey &bull; Deepanshu Nasa &bull; Sachin &bull; Pawan Rathore &bull; Manish Dahiya &bull; Ravi Bagotiya &bull; Aditya Bagotiya &bull; Brijmohan &bull; Rajesh
       </div>
     </div>
   </div>
