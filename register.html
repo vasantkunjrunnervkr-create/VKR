@@ -231,8 +231,9 @@
         <i class="fa-solid fa-rotate-left"></i> Reset Form
       </button>
     </div>
-    <div id="loadingMsg" style="display:none;text-align:center;padding:15px;color:var(--accent);font-weight:bold;">
-      ⏳ Processing, please wait...
+    <div id="loadingMsg" class="loading-box" style="display:none;">
+      <div class="loading-spinner"></div>
+      <span id="loadingText">Creating payment order, please wait...</span>
     </div>
   </form>
 </div>
@@ -324,8 +325,9 @@ async function submitForm(e){
   };
 
   document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
   document.getElementById('loadingMsg').style.display = 'block';
-  document.getElementById('loadingMsg').innerText = '⏳ Creating payment order, please wait...';
+  document.getElementById('loadingText').innerText = 'Creating payment order, please wait...';
 
   try {
     // Step 1: Razorpay order banao backend se
@@ -349,12 +351,12 @@ async function submitForm(e){
       order_id: orderData.orderId,
       handler: function(response){
         formData.razorpayPaymentId = response.razorpay_payment_id;
-        document.getElementById('loadingMsg').innerText = '⏳ Payment successful! Saving your registration...';
+        document.getElementById('loadingText').innerText = 'Payment successful! Saving your registration...';
         finalizeRegistration(formData);
       },
       modal: {
         ondismiss: function(){
-          document.getElementById('submitBtn').disabled = false;
+          document.getElementById('submitBtn').disabled = false; document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-indian-rupee-sign"></i> Pay &amp; Register';
           document.getElementById('loadingMsg').style.display = 'none';
         }
       },
@@ -369,14 +371,14 @@ async function submitForm(e){
     var rzp = new Razorpay(options);
     rzp.on('payment.failed', function(response){
       alert('Payment failed. Please try again or contact 8285486858.');
-      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').disabled = false; document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-indian-rupee-sign"></i> Pay &amp; Register';
       document.getElementById('loadingMsg').style.display = 'none';
     });
     rzp.open();
 
   } catch(err){
     alert('Something went wrong. Please try again or contact 8285486858.');
-    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('submitBtn').disabled = false; document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-indian-rupee-sign"></i> Pay &amp; Register';
     document.getElementById('loadingMsg').style.display = 'none';
   }
 }
@@ -391,7 +393,7 @@ function finalizeRegistration(formData){
     })
     .catch(function(){
       alert('Payment successful but there was an issue saving data. Please contact 8285486858 with your payment details.');
-      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('submitBtn').disabled = false; document.getElementById('submitBtn').innerHTML = '<i class="fa-solid fa-indian-rupee-sign"></i> Pay &amp; Register';
       document.getElementById('loadingMsg').style.display = 'none';
     });
 }
