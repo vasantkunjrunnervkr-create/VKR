@@ -737,10 +737,8 @@ footer { background:#000; border-top:2px solid var(--orange); padding:40px 5%; }
   .stat-num { font-size:22px; }
 }
 @media(max-width:600px){
-  /* HERO MOBILE REDESIGN */
   .hero { height:100svh; min-height:100svh; }
   .hero-content h1 { font-size:32px; }
-
   .section { padding:60px 5%; }
   .section-title { font-size:26px; }
   .stats-bar { gap:0; }
