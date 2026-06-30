@@ -6,6 +6,7 @@
 <title>Order — VKR Store</title>
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 
@@ -136,46 +137,27 @@
         <i class="fa-solid fa-indian-rupee-sign red-icon"></i>
         <h3>Payment</h3>
       </div>
-      <div class="payment-box">
-        <div class="payment-left">
-          <p class="payment-title">UPI / Paytm / GPay</p>
-          <p class="payment-number">8285486858</p>
-          <p class="payment-name">Akshay (VKR)</p>
-          <p style="color:#888;font-size:13px;margin-top:8px;">Pay ₹399 per t-shirt</p>
-        </div>
-        <div class="payment-right">
-          <img src="qr.png" alt="QR Code">
-          <p>Scan to Pay</p>
-        </div>
+      <div style="background:var(--dark3);border-radius:10px;padding:20px;text-align:center;">
+        <p style="color:#999;font-size:13px;margin-bottom:8px;">Total Amount to Pay</p>
+        <p id="amountDisplay" style="color:var(--accent);font-size:32px;font-weight:900;margin:0;">₹399</p>
       </div>
-      <div class="payment-note">
+      <div class="payment-note" style="margin-top:18px;">
         <i class="fa-solid fa-circle-info"></i>
-        Complete payment first, then fill in your Transaction ID and upload screenshot below.
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Transaction ID <span class="req">*</span></label>
-          <input type="text" id="transactionId" placeholder="UPI Transaction ID" required>
-        </div>
-        <div class="form-group">
-          <label>Payment Screenshot <span class="req">*</span></label>
-          <input type="file" id="paymentScreenshot" accept="image/jpeg,image/png,application/pdf" required>
-          <small>JPG, PNG or PDF accepted</small>
-        </div>
+        Fill all details above, then click "Pay & Place Order" to complete secure payment via Razorpay.
       </div>
     </div>
 
     <!-- BUTTONS -->
     <div class="form-actions">
       <button type="submit" class="btn-primary btn-submit" id="submitBtn">
-        <i class="fa-solid fa-bag-shopping"></i> Place Order
+        <i class="fa-solid fa-indian-rupee-sign"></i> Pay &amp; Place Order
       </button>
-      <button type="reset" class="btn-reset" onclick="document.getElementById('totalDisplay').innerText='₹399'">
+      <button type="reset" class="btn-reset" onclick="document.getElementById('amountDisplay').innerText='₹399'">
         <i class="fa-solid fa-rotate-left"></i> Reset
       </button>
     </div>
     <div id="loadingMsg" style="display:none;text-align:center;padding:15px;color:var(--accent);font-weight:bold;">
-      ⏳ Placing your order, please wait...
+      ⏳ Processing, please wait...
     </div>
   </form>
 </div>
@@ -196,11 +178,13 @@
 <script src="script.js"></script>
 <script>
 // ✅ APNA GOOGLE APPS SCRIPT URL YAHAN DAALEIN
-var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymzHUCzCswY-aJQFb0SoNQ4W8D9NebNg6rwsJQWaJn4aCMNkY9s9cFCYfqfC52cj-S/exec";
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzeo4F4E98yc91zVxsHwltAoMArFEFduYbFWojXv7edEiQIoESb6iJHQ0UoLWHHFaEi/exec";
 
 function updateTotal(){
   var qty = parseInt(document.getElementById('quantity').value) || 1;
-  document.getElementById('totalDisplay').innerText = '₹' + (qty * 399);
+  var amount = qty * 399;
+  document.getElementById('totalDisplay').innerText = '₹' + amount;
+  document.getElementById('amountDisplay').innerText = '₹' + amount;
 }
 
 async function submitOrder(e){
@@ -208,8 +192,10 @@ async function submitOrder(e){
   var size = document.querySelector('input[name="tshirtSize"]:checked');
   if(!size){ alert('Please select a t-shirt size.'); return; }
 
-  var qty = document.getElementById('quantity').value;
-  var data = {
+  var qty = parseInt(document.getElementById('quantity').value) || 1;
+  var amount = qty * 399;
+
+  var formData = {
     type: 'order',
     firstName: document.getElementById('firstName').value.trim(),
     lastName: document.getElementById('lastName').value.trim(),
@@ -217,61 +203,80 @@ async function submitOrder(e){
     email: document.getElementById('email').value.trim(),
     tshirtSize: size.value,
     quantity: qty,
-    totalAmount: '₹' + (parseInt(qty)*399),
+    amount: amount,
     address: document.getElementById('address').value.trim(),
-    notes: document.getElementById('notes').value.trim(),
-    transactionId: document.getElementById('transactionId').value.trim()
+    notes: document.getElementById('notes').value.trim()
   };
-
-  var screenshotFile = document.getElementById('paymentScreenshot').files[0];
 
   document.getElementById('submitBtn').disabled = true;
   document.getElementById('loadingMsg').style.display = 'block';
+  document.getElementById('loadingMsg').innerText = '⏳ Creating payment order, please wait...';
 
-  function submitWithScreenshot(base64, mime, ext) {
-    var data = {
-      type: 'order',
-      firstName: document.getElementById('firstName').value.trim(),
-      lastName: document.getElementById('lastName').value.trim(),
-      mobile: document.getElementById('mobile').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      tshirtSize: size.value,
-      quantity: qty,
-      totalAmount: '₹' + (parseInt(qty)*399),
-      address: document.getElementById('address').value.trim(),
-      notes: document.getElementById('notes').value.trim(),
-      transactionId: document.getElementById('transactionId').value.trim(),
-      screenshotBase64: base64,
-      screenshotMime: mime,
-      screenshotExt: ext
+  try {
+    var orderRes = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'createOrder', amount: amount })
+    });
+    var orderData = await orderRes.json();
+
+    if(orderData.status !== 'success'){
+      throw new Error('Order creation failed');
+    }
+
+    var options = {
+      key: orderData.keyId,
+      amount: orderData.amount,
+      currency: "INR",
+      name: "Vasant Kunj Runners",
+      description: "VKR Store - T-Shirt Order",
+      order_id: orderData.orderId,
+      handler: function(response){
+        formData.razorpayPaymentId = response.razorpay_payment_id;
+        document.getElementById('loadingMsg').innerText = '⏳ Payment successful! Saving your order...';
+        finalizeOrder(formData);
+      },
+      modal: {
+        ondismiss: function(){
+          document.getElementById('submitBtn').disabled = false;
+          document.getElementById('loadingMsg').style.display = 'none';
+        }
+      },
+      prefill: {
+        name: formData.firstName + " " + formData.lastName,
+        email: formData.email,
+        contact: formData.mobile
+      },
+      theme: { color: "#E8420A" }
     };
 
-    fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) })
-      .then(function(){
-        document.getElementById('orderContainer').style.display = 'none';
-        document.getElementById('orderSuccess').style.display = 'block';
-        document.getElementById('orderIdDisplay').innerText = '📦 Order submitted! Our team will verify and confirm soon.';
-        window.scrollTo(0, 0);
-      })
-      .catch(function(err){
-        alert('Network error. Please check your internet and try again.');
-        document.getElementById('submitBtn').disabled = false;
-        document.getElementById('loadingMsg').style.display = 'none';
-      });
-  }
+    var rzp = new Razorpay(options);
+    rzp.on('payment.failed', function(response){
+      alert('Payment failed. Please try again or contact 8285486858.');
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('loadingMsg').style.display = 'none';
+    });
+    rzp.open();
 
-  if (screenshotFile) {
-    var reader = new FileReader();
-    reader.onload = function(ev) {
-      var base64 = ev.target.result.split(',')[1];
-      var mime = screenshotFile.type;
-      var ext = screenshotFile.name.split('.').pop();
-      submitWithScreenshot(base64, mime, ext);
-    };
-    reader.readAsDataURL(screenshotFile);
-  } else {
-    submitWithScreenshot('', '', '');
+  } catch(err){
+    alert('Something went wrong. Please try again or contact 8285486858.');
+    document.getElementById('submitBtn').disabled = false;
+    document.getElementById('loadingMsg').style.display = 'none';
   }
+}
+
+function finalizeOrder(formData){
+  fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(formData) })
+    .then(function(){
+      document.getElementById('orderContainer').style.display = 'none';
+      document.getElementById('orderSuccess').style.display = 'block';
+      document.getElementById('orderIdDisplay').innerText = '📦 Payment successful! Order confirmed.';
+      window.scrollTo(0, 0);
+    })
+    .catch(function(){
+      alert('Payment successful but there was an issue saving data. Please contact 8285486858 with your payment details.');
+      document.getElementById('submitBtn').disabled = false;
+      document.getElementById('loadingMsg').style.display = 'none';
+    });
 }
 </script>
 </body>
