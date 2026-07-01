@@ -29,12 +29,15 @@
     <a href="#contact">Contact</a>
     <a href="register.html" class="nav-cta">Register Now</a>
   </nav>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="header-right">
+    <a href="#store" class="store-icon-btn" title="VKR Store"><i class="fa-solid fa-bag-shopping"></i></a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO SLIDER -->
 <section class="hero">
   <div class="hero-slides">
     <div class="slide active" style="background-image:url('banner1.jpg')"></div>
@@ -53,15 +56,6 @@
     <div class="hero-badge">🌿 SANJAY VAN, NEW DELHI</div>
     <h1>VKR 5KM RUN<br><span class="hero-accent">&amp; FUN MORNING</span></h1>
     <p class="hero-tagline">Fitness &bull; Friendship &bull; Finish Lines</p>
-    <div class="hero-meta">
-      <div class="meta-item"><i class="fa-regular fa-calendar"></i> Sunday, 02 August 2026</div>
-      <div class="meta-item"><i class="fa-regular fa-clock"></i> Reporting: 5:20 AM | Run: 6:00 AM</div>
-      <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Gate No. 1, Sanjay Van</div>
-    </div>
-    <div class="hero-actions">
-      <a href="register.html" class="btn-primary">🏃 Register Now</a>
-      <a href="#event" class="btn-outline">View Details</a>
-    </div>
     <div class="hero-socials">
       <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
       <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -69,7 +63,32 @@
       <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank"><i class="fa-brands fa-youtube"></i></a>
     </div>
   </div>
-  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- HERO INFO BAR (below image on mobile) -->
+<div class="hero-info-bar">
+  <div class="hero-meta">
+    <div class="meta-item"><i class="fa-regular fa-calendar"></i> Sunday, 02 August 2026</div>
+    <div class="meta-item"><i class="fa-regular fa-clock"></i> Reporting: 5:20 AM | Run: 6:00 AM</div>
+    <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Gate No. 1, Sanjay Van</div>
+  </div>
+  <div class="hero-actions">
+    <a href="register.html" class="btn-primary">🏃 Register Now</a>
+    <a href="#event" class="btn-outline">View Details</a>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<section class="vkr-video-section">
+  <div class="vkr-video-wrap">
+    <iframe
+      src="https://www.youtube.com/embed/4oHO7-iu9zU?autoplay=1&mute=1&loop=1&playlist=4oHO7-iu9zU&controls=0&showinfo=0&rel=0&modestbranding=1"
+      title="VKR Video"
+      frameborder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
 </section>
 
 <!-- STATS BAR -->
@@ -213,7 +232,6 @@
         <p>Contributes to the planning and coordination of VKR events.</p>
       </div>
     </div>
-    <!-- SUPPORT TEAM 2x2 -->
     <div class="support-team-grid">
       <div class="support-card">
         <div class="support-avatar-wrap">
@@ -252,7 +270,6 @@
         <p>Coordinates volunteers during the race.</p>
       </div>
     </div>
-
     <div class="support-section">
       <h3>Community Support Team</h3>
       <div class="support-names">
@@ -285,11 +302,8 @@
     <h2 class="section-title">VKR <span class="red">Store</span></h2>
     <p class="store-sub">Wear your passion. Every purchase supports the VKR running community.</p>
     <div class="store-grid">
-
-      <!-- T-SHIRT -->
       <div class="product-card">
         <div class="product-img-wrap">
-          <!-- T-Shirt Image Slider -->
           <div class="tshirt-slider" id="tshirtSlider">
             <div class="tslide active"><img src="tshirt1.jpg" alt="VKR T-Shirt Front" onerror="this.parentElement.style.display='none'"></div>
             <div class="tslide"><img src="tshirt2.jpg" alt="VKR T-Shirt Back" onerror="this.parentElement.style.display='none'"></div>
@@ -309,64 +323,40 @@
         <div class="product-info">
           <h3>VKR Running T-Shirt</h3>
           <p class="product-desc">Official VKR dry-fit running t-shirt. Lightweight, breathable and perfect for your morning runs.</p>
-          <div class="product-sizes">
-            <span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span><span>XXXL</span>
-          </div>
+          <div class="product-sizes"><span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span><span>XXXL</span></div>
           <div class="product-footer">
             <span class="product-price">₹399</span>
             <a href="order.html" class="btn-order">Order Now</a>
           </div>
         </div>
       </div>
-
-      <!-- VKR CAP -->
       <div class="product-coming">
-        <div class="coming-placeholder">
-          <i class="fa-solid fa-hat-cowboy"></i>
-          <span>COMING SOON</span>
-        </div>
+        <div class="coming-placeholder"><i class="fa-solid fa-hat-cowboy"></i><span>COMING SOON</span></div>
         <div class="product-info">
           <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
           <h3>VKR Cap</h3>
           <p class="product-desc">Official VKR running cap. Stay cool and represent the community on every run.</p>
-          <div class="product-footer">
-            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
-          </div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
         </div>
       </div>
-
-      <!-- VKR SHAKER BOTTLE -->
       <div class="product-coming">
-        <div class="coming-placeholder">
-          <i class="fa-solid fa-bottle-water"></i>
-          <span>COMING SOON</span>
-        </div>
+        <div class="coming-placeholder"><i class="fa-solid fa-bottle-water"></i><span>COMING SOON</span></div>
         <div class="product-info">
           <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
           <h3>VKR Shaker Bottle</h3>
           <p class="product-desc">Official VKR shaker bottle. Hydrate right, run right — built for runners.</p>
-          <div class="product-footer">
-            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
-          </div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
         </div>
       </div>
-
-      <!-- VKR WRISTBAND -->
       <div class="product-coming">
-        <div class="coming-placeholder">
-          <i class="fa-solid fa-hand-fist"></i>
-          <span>COMING SOON</span>
-        </div>
+        <div class="coming-placeholder"><i class="fa-solid fa-hand-fist"></i><span>COMING SOON</span></div>
         <div class="product-info">
           <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
           <h3>VKR Sweat Wristband</h3>
           <p class="product-desc">Official VKR sweat wristband. Keep the sweat off and the energy high during your runs.</p>
-          <div class="product-footer">
-            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
-          </div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
         </div>
       </div>
-
     </div>
     <div class="store-note">
       <i class="fa-solid fa-truck"></i>
