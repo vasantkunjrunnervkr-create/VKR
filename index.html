@@ -13,7 +13,8 @@
 <header id="header">
   <div class="logo-section">
     <img src="vkr_logo.png" alt="VKR Logo">
-    <div class="logo-divider"></div><div class="logo-text">
+    <div class="logo-divider"></div>
+    <div class="logo-text">
       <span class="logo-main">VASANT KUNJ RUNNERS</span>
       <span class="logo-sub">VKR • VASANT KUNJ, NEW DELHI</span>
     </div>
@@ -29,12 +30,15 @@
     <a href="#contact">Contact</a>
     <a href="register.html" class="nav-cta">Register Now</a>
   </nav>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="header-right">
+    <a href="#store" class="store-icon-btn" title="VKR Store"><i class="fa-solid fa-bag-shopping"></i></a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO SLIDER -->
 <section class="hero">
   <div class="hero-slides">
     <div class="slide active" style="background-image:url('banner1.jpg')"></div>
@@ -183,6 +187,8 @@
     <div class="section-label">THE PEOPLE</div>
     <h2 class="section-title">Our <span class="red">Team</span></h2>
     <div class="team-grid">
+
+      <!-- AKSHAY -->
       <div class="team-card">
         <div class="team-avatar-wrap">
           <img src="akshay.jpg" alt="Akshay Racer" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -191,8 +197,13 @@
         <h3>Akshay Racer</h3>
         <span class="team-role">Founder &amp; Community Lead</span>
         <p>Founder of VKR, organizing running events and fitness initiatives in Vasant Kunj.</p>
-        <a href="tel:8285486858" class="team-contact"><i class="fa-solid fa-phone"></i> 8285486858</a>
+        <div class="team-links">
+          <a href="tel:8285486858" class="team-contact"><i class="fa-solid fa-phone"></i> 8285486858</a>
+          <a href="https://www.instagram.com/akshay.racer?igsh=MTlwZHcxNzdsMjhxcw==" target="_blank" class="team-insta"><i class="fa-brands fa-instagram"></i> @akshay.racer</a>
+        </div>
       </div>
+
+      <!-- AJAY -->
       <div class="team-card">
         <div class="team-avatar-wrap">
           <img src="ajay.jpg" alt="Ajay Gandas" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -201,8 +212,12 @@
         <h3>Ajay Gandas</h3>
         <span class="team-role">Co-Founder &amp; Community Coordinator</span>
         <p>Has supported VKR from day one and continues to strengthen the community through coordination and support.</p>
-        <a href="tel:9953067473" class="team-contact"><i class="fa-solid fa-phone"></i> 9953067473</a>
+        <div class="team-links">
+          <a href="tel:9953067473" class="team-contact"><i class="fa-solid fa-phone"></i> 9953067473</a>
+        </div>
       </div>
+
+      <!-- ADITYA -->
       <div class="team-card">
         <div class="team-avatar-wrap">
           <img src="aditya.jpg" alt="Aditya Ojha" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
@@ -212,7 +227,9 @@
         <span class="team-role">Operations &amp; Event Coordinator</span>
         <p>Contributes to the planning and coordination of VKR events.</p>
       </div>
+
     </div>
+
     <!-- SUPPORT TEAM 2x2 -->
     <div class="support-team-grid">
       <div class="support-card">
@@ -286,15 +303,14 @@
     <p class="store-sub">Wear your passion. Every purchase supports the VKR running community.</p>
     <div class="store-grid">
 
-      <!-- T-SHIRT -->
+      <!-- T-SHIRT with slider -->
       <div class="product-card">
         <div class="product-img-wrap">
-          <!-- T-Shirt Image Slider -->
           <div class="tshirt-slider" id="tshirtSlider">
             <div class="tslide active"><img src="tshirt1.jpg" alt="VKR T-Shirt Front" onerror="this.parentElement.style.display='none'"></div>
             <div class="tslide"><img src="tshirt2.jpg" alt="VKR T-Shirt Back" onerror="this.parentElement.style.display='none'"></div>
-            <div class="tslide"><img src="tshirt3.jpg" alt="VKR T-Shirt Sample 3" onerror="this.parentElement.style.display='none'"></div>
-            <div class="tslide"><img src="tshirt4.jpg" alt="VKR T-Shirt Sample 4" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt3.jpg" alt="VKR T-Shirt 3" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt4.jpg" alt="VKR T-Shirt 4" onerror="this.parentElement.style.display='none'"></div>
           </div>
           <button class="tslider-btn tslider-prev" onclick="tSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
           <button class="tslider-btn tslider-next" onclick="tSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
@@ -309,9 +325,7 @@
         <div class="product-info">
           <h3>VKR Running T-Shirt</h3>
           <p class="product-desc">Official VKR dry-fit running t-shirt. Lightweight, breathable and perfect for your morning runs.</p>
-          <div class="product-sizes">
-            <span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span><span>XXXL</span>
-          </div>
+          <div class="product-sizes"><span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span><span>XXXL</span></div>
           <div class="product-footer">
             <span class="product-price">₹399</span>
             <a href="order.html" class="btn-order">Order Now</a>
@@ -319,51 +333,60 @@
         </div>
       </div>
 
+      <!-- VKR MAN T-SHIRT -->
+      <div class="product-coming">
+        <div class="coming-placeholder"><i class="fa-solid fa-person"></i><span>COMING SOON</span></div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Man T-Shirt</h3>
+          <p class="product-desc">Exclusive VKR men's running t-shirt — designed for performance and community pride.</p>
+          <div class="product-sizes"><span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span></div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
+        </div>
+      </div>
+
+      <!-- VKR WOMAN T-SHIRT -->
+      <div class="product-coming">
+        <div class="coming-placeholder"><i class="fa-solid fa-person-dress"></i><span>COMING SOON</span></div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Woman T-Shirt</h3>
+          <p class="product-desc">Exclusive VKR women's running t-shirt — stylish, comfortable and made for runners.</p>
+          <div class="product-sizes"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
+        </div>
+      </div>
+
       <!-- VKR CAP -->
       <div class="product-coming">
-        <div class="coming-placeholder">
-          <i class="fa-solid fa-hat-cowboy"></i>
-          <span>COMING SOON</span>
-        </div>
+        <div class="coming-placeholder"><i class="fa-solid fa-hat-cowboy"></i><span>COMING SOON</span></div>
         <div class="product-info">
           <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
           <h3>VKR Cap</h3>
           <p class="product-desc">Official VKR running cap. Stay cool and represent the community on every run.</p>
-          <div class="product-footer">
-            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
-          </div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
         </div>
       </div>
 
-      <!-- VKR SHAKER BOTTLE -->
+      <!-- VKR SHAKER -->
       <div class="product-coming">
-        <div class="coming-placeholder">
-          <i class="fa-solid fa-bottle-water"></i>
-          <span>COMING SOON</span>
-        </div>
+        <div class="coming-placeholder"><i class="fa-solid fa-bottle-water"></i><span>COMING SOON</span></div>
         <div class="product-info">
           <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
           <h3>VKR Shaker Bottle</h3>
           <p class="product-desc">Official VKR shaker bottle. Hydrate right, run right — built for runners.</p>
-          <div class="product-footer">
-            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
-          </div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
         </div>
       </div>
 
       <!-- VKR WRISTBAND -->
       <div class="product-coming">
-        <div class="coming-placeholder">
-          <i class="fa-solid fa-hand-fist"></i>
-          <span>COMING SOON</span>
-        </div>
+        <div class="coming-placeholder"><i class="fa-solid fa-hand-fist"></i><span>COMING SOON</span></div>
         <div class="product-info">
           <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
           <h3>VKR Sweat Wristband</h3>
           <p class="product-desc">Official VKR sweat wristband. Keep the sweat off and the energy high during your runs.</p>
-          <div class="product-footer">
-            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
-          </div>
+          <div class="product-footer"><span class="product-price" style="color:var(--blue)">Coming Soon</span></div>
         </div>
       </div>
 
@@ -375,15 +398,35 @@
   </div>
 </section>
 
-<!-- PARTNERS -->
+<!-- PARTNERS & SPONSORS -->
 <section id="partners" class="section">
   <div class="section-inner">
     <div class="section-label">COLLABORATION</div>
     <h2 class="section-title">Partners <span class="red">&amp; Sponsors</span></h2>
-    <div class="partners-grid" style="grid-template-columns:1fr;">
+
+    <!-- SPONSOR LOGO SLIDER -->
+    <div class="sponsor-slider-wrap">
+      <div class="sponsor-track" id="sponsorTrack">
+        <!-- Placeholder logos - replace with real sponsor logos when available -->
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-handshake"></i><span>Your Brand Here</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-star"></i><span>Sponsor 2</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-award"></i><span>Sponsor 3</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-trophy"></i><span>Sponsor 4</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-medal"></i><span>Sponsor 5</span></div></div>
+        <!-- Duplicate for seamless loop -->
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-handshake"></i><span>Your Brand Here</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-star"></i><span>Sponsor 2</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-award"></i><span>Sponsor 3</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-trophy"></i><span>Sponsor 4</span></div></div>
+        <div class="sponsor-item"><div class="sponsor-placeholder"><i class="fa-solid fa-medal"></i><span>Sponsor 5</span></div></div>
+      </div>
+    </div>
+
+    <div class="partners-grid" style="grid-template-columns:1fr;margin-top:30px;">
       <div class="partner-info-card">
         <h3>🤝 Become a Partner</h3>
         <p>We welcome collaborations with brands, gyms, nutrition companies and local businesses.</p>
+        <p>Your logo will be featured on our website and promoted across all VKR social media channels.</p>
         <a href="https://wa.me/918285486858" target="_blank" class="btn-partner">
           <i class="fa-brands fa-whatsapp"></i> Partner With VKR
         </a>
@@ -455,5 +498,21 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+// T-SHIRT SLIDER
+var tCurrent = 0;
+function tGoTo(n){
+  var slides = document.querySelectorAll('.tslide');
+  var dots = document.querySelectorAll('.tdot');
+  if(!slides.length) return;
+  slides[tCurrent].classList.remove('active');
+  if(dots[tCurrent]) dots[tCurrent].classList.remove('active');
+  tCurrent = (n + slides.length) % slides.length;
+  slides[tCurrent].classList.add('active');
+  if(dots[tCurrent]) dots[tCurrent].classList.add('active');
+}
+function tSlide(dir){ tGoTo(tCurrent + dir); }
+setInterval(function(){ tSlide(1); }, 2500);
+</script>
 </body>
 </html>
