@@ -1,368 +1,459 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akshay Racer Official Brand</title>
-    <style>
-        /* Modern & Premium Minimalist Theme */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #0b0c10;
-            color: #c5c6c7;
-            overflow-x: hidden;
-        }
-
-        header {
-            background-color: #1f2833;
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #45f3ff;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            letter-spacing: 2px;
-        }
-
-        .logo span {
-            color: #45f3ff;
-        }
-
-        nav a {
-            color: #c5c6c7;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #45f3ff;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(rgba(11, 12, 16, 0.8), rgba(11, 12, 16, 0.9)), url('https://images.unsplash.com/photo-1508962914676-134849a727f0?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            color: #fff;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #45f3ff;
-        }
-
-        /* Products Section */
-        .products-section {
-            padding: 80px 50px;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 32px;
-            color: #fff;
-            margin-bottom: 50px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 50%;
-            height: 3px;
-            background-color: #45f3ff;
-            position: absolute;
-            bottom: -10px;
-            left: 25%;
-        }
-
-        .products-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .product-card {
-            background-color: #1f2833;
-            border-radius: 12px;
-            width: 320px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            position: relative;
-            border: 1px solid #2f3b4c;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            border-color: #45f3ff;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 300px;
-            background-color: #0b0c10;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
-            border: 1px dashed #45f3ff;
-            position: relative;
-        }
-
-        .coming-soon-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background-color: #ff3366;
-            color: #fff;
-            padding: 5px 12px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 20px;
-            text-transform: uppercase;
-            box-shadow: 0 2px 10px rgba(255,51,102,0.4);
-        }
-
-        .product-title {
-            font-size: 20px;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .product-price {
-            font-size: 18px;
-            color: #45f3ff;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        /* Sliding Brands Support Section (Left to Right) */
-        .brands-section {
-            padding: 60px 0;
-            background-color: #151a22;
-            border-top: 1px solid #1f2833;
-            border-bottom: 1px solid #1f2833;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .brands-title {
-            text-align: center;
-            font-size: 18px;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 25px;
-        }
-
-        .slider {
-            display: flex;
-            width: 200%;
-            animation: slideLeftToRight 20s linear infinite;
-        }
-
-        .slider-track {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-        }
-
-        .brand-logo {
-            width: 150px;
-            height: 60px;
-            background-color: #1f2833;
-            border: 1px dashed #45f3ff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #c5c6c7;
-            font-size: 12px;
-            font-weight: 500;
-            border-radius: 6px;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .brand-logo:hover {
-            opacity: 1;
-        }
-
-        @keyframes slideLeftToRight {
-            0% {
-                transform: translateX(-50%);
-            }
-            100% {
-                transform: translateX(0%);
-            }
-        }
-
-        /* Founder & Instagram Section */
-        .founder-section {
-            background-color: #1f2833;
-            padding: 40px 20px;
-            text-align: center;
-            border-top: 2px solid #45f3ff;
-        }
-
-        .founder-info h3 {
-            font-size: 22px;
-            color: #fff;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .founder-info p {
-            font-size: 14px;
-            color: #45f3ff;
-            margin-bottom: 15px;
-        }
-
-        .insta-link {
-            display: inline-flex;
-            align-items: center;
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-weight: bold;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .insta-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(220, 39, 67, 0.4);
-        }
-
-        .insta-link svg {
-            margin-right: 8px;
-            fill: #fff;
-            width: 16px;
-            height: 16px;
-        }
-
-        footer {
-            background-color: #0b0c10;
-            text-align: center;
-            padding: 20px;
-            font-size: 12px;
-            color: #666;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vasant Kunj Runners — VKR 5K Run & Fun Morning</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="logo">AKSHAY <span>RACER</span></div>
-        <nav>
-            <a href="#products">Shop</a>
-            <a href="#brands">Brands</a>
-            <a href="#founder">Founder</a>
-        </nav>
-    </header>
+<!-- HEADER -->
+<header id="header">
+  <div class="logo-section">
+    <img src="vkr_logo.png" alt="VKR Logo">
+    <div class="logo-divider"></div><div class="logo-text">
+      <span class="logo-main">VASANT KUNJ RUNNERS</span>
+      <span class="logo-sub">VKR • VASANT KUNJ, NEW DELHI</span>
+    </div>
+  </div>
+  <nav id="mainNav">
+    <a href="#about">About</a>
+    <a href="#event">Event</a>
+    <a href="#includes">Includes</a>
+    <a href="#team">Team</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#store">VKR Store</a>
+    <a href="#partners">Partners</a>
+    <a href="#contact">Contact</a>
+    <a href="register.html" class="nav-cta">Register Now</a>
+  </nav>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
 
-    <!-- Hero Banner -->
-    <section class="hero">
-        <h1>New Premium Collection</h1>
-        <p>Speed, Style, and Performance Redefined.</p>
-    </section>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slides">
+    <div class="slide active" style="background-image:url('banner1.jpg')"></div>
+    <div class="slide" style="background-image:url('banner2.jpg')"></div>
+    <div class="slide" style="background-image:url('banner3.jpg')"></div>
+    <div class="slide" style="background-image:url('banner4.jpg')"></div>
+    <div class="slide" style="background-image:url('banner5.jpg')"></div>
+    <div class="slide" style="background-image:url('banner6.jpg')"></div>
+    <div class="slide" style="background-image:url('banner7.jpg')"></div>
+    <div class="slide" style="background-image:url('banner8.jpg')"></div>
+    <div class="slide" style="background-image:url('banner9.jpg')"></div>
+    <div class="slide" style="background-image:url('banner10.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🌿 SANJAY VAN, NEW DELHI</div>
+    <h1>VKR 5KM RUN<br><span class="hero-accent">&amp; FUN MORNING</span></h1>
+    <p class="hero-tagline">Fitness &bull; Friendship &bull; Finish Lines</p>
+    <div class="hero-meta">
+      <div class="meta-item"><i class="fa-regular fa-calendar"></i> Sunday, 02 August 2026</div>
+      <div class="meta-item"><i class="fa-regular fa-clock"></i> Reporting: 5:20 AM | Run: 6:00 AM</div>
+      <div class="meta-item"><i class="fa-solid fa-location-dot"></i> Gate No. 1, Sanjay Van</div>
+    </div>
+    <div class="hero-actions">
+      <a href="register.html" class="btn-primary">🏃 Register Now</a>
+      <a href="#event" class="btn-outline">View Details</a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
 
-    <!-- Products Section -->
-    <section class="products-section" id="products">
-        <h2 class="section-title">Exclusive T-Shirts</h2>
-        <div class="products-container">
-            
-            <!-- Man T-Shirt -->
-            <div class="product-card">
-                <span class="coming-soon-badge">Coming Soon</span>
-                <div class="product-image">
-                    [ Man T-Shirt Placeholder ]
-                </div>
-                <h3 class="product-title">Premium Man T-Shirt</h3>
-                <div class="product-price">₹ Same Price</div>
-            </div>
+<!-- STATS BAR -->
+<section class="stats-bar">
+  <div class="stat"><span class="stat-num">5KM</span><span class="stat-label">Distance</span></div>
+  <div class="stat"><span class="stat-num">6:00</span><span class="stat-label">Start Time AM</span></div>
+  <div class="stat"><span class="stat-num">₹100</span><span class="stat-label">Men Entry</span></div>
+  <div class="stat"><span class="stat-num">₹50</span><span class="stat-label">Women Entry</span></div>
+  <div class="stat"><span class="stat-num">02 Aug</span><span class="stat-label">Event Date 2026</span></div>
+</section>
 
-            <!-- Women T-Shirt -->
-            <div class="product-card">
-                <span class="coming-soon-badge">Coming Soon</span>
-                <div class="product-image">
-                    [ Women T-Shirt Placeholder ]
-                </div>
-                <h3 class="product-title">Premium Women T-Shirt</h3>
-                <div class="product-price">₹ Same Price</div>
-            </div>
-
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="section-inner">
+    <div class="section-label">WHO WE ARE</div>
+    <h2 class="section-title">About <span class="red">VKR</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Vasant Kunj Runners (VKR) is a running group based in Vasant Kunj, New Delhi. We bring together people who enjoy running, staying active, and supporting each other on their fitness journey.</p>
+        <p>Our goal is simple — to organize well-managed running events where runners of all experience levels feel welcome. Whether you're just starting or have been running for years, VKR is a place to participate, connect, and enjoy the experience.</p>
+        <p>Along with our running events, we also organize fun post-run activities and offer official VKR merchandise for our members.</p>
+        <p><strong style="color:var(--yellow)">At VKR, every run is about fitness, consistency, and enjoying the journey together.</strong></p>
+        <div class="about-tags">
+          <span>🏃 Community Running</span>
+          <span>💪 All Fitness Levels</span>
+          <span>🤝 Vasant Kunj</span>
+          <span>🌿 Nature Runs</span>
         </div>
-    </section>
+      </div>
+      <div class="about-card">
+        <div class="about-card-icon">🏆</div>
+        <h3>Our Vision</h3>
+        <p>To inspire people to stay active through running and community fitness.</p>
+        <br>
+        <p>Our goal is to organize 2–3 community running events each year, creating opportunities for runners to connect, stay motivated, and enjoy running together.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Sliding Brands Support Section (Left to Right) -->
-    <section class="brands-section" id="brands">
-        <div class="brands-title">Looking For Brand Support / Partners</div>
-        <div class="slider">
-            <div class="slider-track">
-                <div class="brand-logo">Your Brand Here</div>
-                <div class="brand-logo">Support Us</div>
-                <div class="brand-logo">Partner Logo</div>
-                <div class="brand-logo">Your Logo Here</div>
-                <div class="brand-logo">Brand Space</div>
-            </div>
-            <div class="slider-track">
-                <div class="brand-logo">Your Brand Here</div>
-                <div class="brand-logo">Support Us</div>
-                <div class="brand-logo">Partner Logo</div>
-                <div class="brand-logo">Your Logo Here</div>
-                <div class="brand-logo">Brand Space</div>
-            </div>
+<!-- EVENT DETAILS -->
+<section id="event" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-label">UPCOMING EVENT</div>
+    <h2 class="section-title">VKR 5KM Run <span class="red">&amp; Fun Morning</span></h2>
+    <div class="event-grid">
+      <div class="event-detail-card">
+        <i class="fa-regular fa-calendar red-icon"></i>
+        <h4>Date</h4>
+        <p>Sunday, 02 August 2026</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-solid fa-location-dot red-icon"></i>
+        <h4>Venue</h4>
+        <p>Gate No. 1, Sanjay Van, New Delhi</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-regular fa-clock red-icon"></i>
+        <h4>Timing</h4>
+        <p>Reporting: 5:20 AM<br>Run Starts: 6:00 AM</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-solid fa-road red-icon"></i>
+        <h4>Distance</h4>
+        <p>5 Kilometres</p>
+      </div>
+      <div class="event-detail-card">
+        <i class="fa-solid fa-indian-rupee-sign red-icon"></i>
+        <h4>Entry Fee</h4>
+        <p>Men: ₹100<br>Women: ₹50</p>
+      </div>
+    </div>
+    <div class="guidelines-box">
+      <h3>⚠️ Important Guidelines</h3>
+      <ul>
+        <li>Reach on time — reporting at 5:20 AM sharp</li>
+        <li>Follow route instructions given by volunteers</li>
+        <li>Respect fellow participants at all times</li>
+        <li>Keep the venue clean — no littering</li>
+        <li>Maintain discipline throughout the event</li>
+        <li>Positive vibes only 😊</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section id="includes" class="section">
+  <div class="section-inner">
+    <div class="section-label">WHAT YOU GET</div>
+    <h2 class="section-title">What's <span class="red">Included</span></h2>
+    <div class="includes-grid">
+      <div class="include-card"><div class="include-icon">🧘</div><h4>Guided Warm-Up</h4><p>Warm-up and stretching session before the run</p></div>
+      <div class="include-card"><div class="include-icon">🏃</div><h4>5KM Run / Walk</h4><p>Suitable for all fitness levels — beginners are welcome!</p></div>
+      <div class="include-card"><div class="include-icon">🍋</div><h4>Hydration Support</h4><p>Fresh lemon water provided during and after the run</p></div>
+      <div class="include-card"><div class="include-icon">🎮</div><h4>Fun Games</h4><p>Group activities and exciting spot competitions</p></div>
+      <div class="include-card"><div class="include-icon">🥤</div><h4>Post-Run Refreshments</h4><p>Refreshments after the run to recharge and relax</p></div>
+      <div class="include-card"><div class="include-icon">📸</div><h4>Group Photos</h4><p>Official photos and videos captured at the event</p></div>
+      <div class="include-card"><div class="include-icon">🌿</div><h4>Nature Experience</h4><p>Road run followed by fun activities in the natural surroundings of Sanjay Van.</p></div>
+    </div>
+    <div class="includes-cta">
+      <p>Whether you are a beginner, walker, jogger or experienced runner — <strong>everyone is welcome!</strong></p>
+      <a href="register.html" class="btn-primary" style="margin-top:20px;display:inline-flex;">Register Now — ₹100 / ₹50</a>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-label">THE PEOPLE</div>
+    <h2 class="section-title">Our <span class="red">Team</span></h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar-wrap">
+          <img src="akshay.jpg" alt="Akshay Racer" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="team-avatar" style="display:none">AR</div>
         </div>
-    </section>
-
-    <!-- Founder Section with Instagram Page -->
-    <section class="founder-section" id="founder">
-        <div class="founder-info">
-            <h3>Founder: Akshay Racer</h3>
-            <p>Driven by Passion, Built for Performance.</p>
-            <a href="https://instagram.com/" target="_blank" class="insta-link">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                Follow @akshay_racer
-            </a>
+        <h3>Akshay Racer</h3>
+        <span class="team-role">Founder &amp; Community Lead</span>
+        <p>Founder of VKR, organizing running events and fitness initiatives in Vasant Kunj.</p>
+        <a href="tel:8285486858" class="team-contact"><i class="fa-solid fa-phone"></i> 8285486858</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar-wrap">
+          <img src="ajay.jpg" alt="Ajay Gandas" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="team-avatar" style="display:none">AG</div>
         </div>
-    </section>
+        <h3>Ajay Gandas</h3>
+        <span class="team-role">Co-Founder &amp; Community Coordinator</span>
+        <p>Has supported VKR from day one and continues to strengthen the community through coordination and support.</p>
+        <a href="tel:9953067473" class="team-contact"><i class="fa-solid fa-phone"></i> 9953067473</a>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar-wrap">
+          <img src="aditya.jpg" alt="Aditya Ojha" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="team-avatar" style="display:none">AO</div>
+        </div>
+        <h3>Aditya Ojha</h3>
+        <span class="team-role">Operations &amp; Event Coordinator</span>
+        <p>Contributes to the planning and coordination of VKR events.</p>
+      </div>
+    </div>
+    <!-- SUPPORT TEAM 2x2 -->
+    <div class="support-team-grid">
+      <div class="support-card">
+        <div class="support-avatar-wrap">
+          <img src="manoj.jpg" alt="Manoj Mehlawat" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="team-avatar" style="display:none">MM</div>
+        </div>
+        <h4>Manoj Mehlawat</h4>
+        <span class="team-role">Sports Activity Expert</span>
+        <p>(M.P.Ed.) Helps organize fun fitness and group activities during VKR events.</p>
+      </div>
+      <div class="support-card">
+        <div class="support-avatar-wrap">
+          <img src="vikas.jpg" alt="Vikas Sharma" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="team-avatar" style="display:none">VS</div>
+        </div>
+        <h4>Vikas Sharma</h4>
+        <span class="team-role">Media Partner</span>
+        <p>Captures every VKR moment through photography and videography at our events.</p>
+      </div>
+      <div class="support-card">
+        <div class="support-avatar-wrap">
+          <img src="rohit.jpg" alt="Rohit Joshi" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="team-avatar" style="display:none">RJ</div>
+        </div>
+        <h4>Rohit Joshi</h4>
+        <span class="team-role">Registration Desk</span>
+        <p>Supports event registrations and participant coordination.</p>
+      </div>
+      <div class="support-card">
+        <div class="support-avatar-wrap">
+          <img src="naveen.jpg" alt="Naveen Yadav" class="team-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="team-avatar" style="display:none">NY</div>
+        </div>
+        <h4>Naveen Yadav</h4>
+        <span class="team-role">Volunteer Coordinator</span>
+        <p>Coordinates volunteers during the race.</p>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2026 Akshay Racer. All Rights Reserved.
-    </footer>
+    <div class="support-section">
+      <h3>Community Support Team</h3>
+      <div class="support-names">
+        Shivam Sharma &bull; Hari &bull; Nitin &bull; Yash Mehlawat &bull; Sumit Badgujar &bull; Shubham Pandey &bull; Deepanshu Nasa &bull; Sachin &bull; Pawan Rathore &bull; Manish Dahiya &bull; Ravi Bagotiya &bull; Aditya Bagotiya &bull; Brijmohan &bull; Rajesh
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="section-inner">
+    <div class="section-label">MOMENTS</div>
+    <h2 class="section-title">VKR <span class="red">Gallery</span></h2>
+    <div class="gallery-coming">
+      <div class="gallery-icon">📸</div>
+      <h3>VKR Gallery</h3>
+      <p>Photos and videos from all VKR runs and community events — relive the moments!</p>
+      <a href="gallery.html" class="btn-primary" style="margin-top:20px;display:inline-flex;align-items:center;gap:8px;">
+        <i class="fa-solid fa-images"></i> View All Photos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VKR STORE -->
+<section id="store" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-label">OFFICIAL MERCHANDISE</div>
+    <h2 class="section-title">VKR <span class="red">Store</span></h2>
+    <p class="store-sub">Wear your passion. Every purchase supports the VKR running community.</p>
+    <div class="store-grid">
+
+      <!-- T-SHIRT -->
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <!-- T-Shirt Image Slider -->
+          <div class="tshirt-slider" id="tshirtSlider">
+            <div class="tslide active"><img src="tshirt1.jpg" alt="VKR T-Shirt Front" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt2.jpg" alt="VKR T-Shirt Back" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt3.jpg" alt="VKR T-Shirt Sample 3" onerror="this.parentElement.style.display='none'"></div>
+            <div class="tslide"><img src="tshirt4.jpg" alt="VKR T-Shirt Sample 4" onerror="this.parentElement.style.display='none'"></div>
+          </div>
+          <button class="tslider-btn tslider-prev" onclick="tSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="tslider-btn tslider-next" onclick="tSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+          <div class="tslider-dots" id="tsliderDots">
+            <span class="tdot active" onclick="tGoTo(0)"></span>
+            <span class="tdot" onclick="tGoTo(1)"></span>
+            <span class="tdot" onclick="tGoTo(2)"></span>
+            <span class="tdot" onclick="tGoTo(3)"></span>
+          </div>
+          <div class="product-badge">NEW</div>
+        </div>
+        <div class="product-info">
+          <h3>VKR Running T-Shirt</h3>
+          <p class="product-desc">Official VKR dry-fit running t-shirt. Lightweight, breathable and perfect for your morning runs.</p>
+          <div class="product-sizes">
+            <span>S</span><span>M</span><span>L</span><span>XL</span><span>XXL</span><span>XXXL</span>
+          </div>
+          <div class="product-footer">
+            <span class="product-price">₹399</span>
+            <a href="order.html" class="btn-order">Order Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- VKR CAP -->
+      <div class="product-coming">
+        <div class="coming-placeholder">
+          <i class="fa-solid fa-hat-cowboy"></i>
+          <span>COMING SOON</span>
+        </div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Cap</h3>
+          <p class="product-desc">Official VKR running cap. Stay cool and represent the community on every run.</p>
+          <div class="product-footer">
+            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VKR SHAKER BOTTLE -->
+      <div class="product-coming">
+        <div class="coming-placeholder">
+          <i class="fa-solid fa-bottle-water"></i>
+          <span>COMING SOON</span>
+        </div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Shaker Bottle</h3>
+          <p class="product-desc">Official VKR shaker bottle. Hydrate right, run right — built for runners.</p>
+          <div class="product-footer">
+            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- VKR WRISTBAND -->
+      <div class="product-coming">
+        <div class="coming-placeholder">
+          <i class="fa-solid fa-hand-fist"></i>
+          <span>COMING SOON</span>
+        </div>
+        <div class="product-info">
+          <div class="product-badge" style="position:relative;top:0;left:0;display:inline-block;margin-bottom:8px;">SOON</div>
+          <h3>VKR Sweat Wristband</h3>
+          <p class="product-desc">Official VKR sweat wristband. Keep the sweat off and the energy high during your runs.</p>
+          <div class="product-footer">
+            <span class="product-price" style="color:var(--blue)">Coming Soon</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="store-note">
+      <i class="fa-solid fa-truck"></i>
+      <span>Orders are delivered within Vasant Kunj. For other areas, contact us on WhatsApp: <strong>8285486858</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners" class="section">
+  <div class="section-inner">
+    <div class="section-label">COLLABORATION</div>
+    <h2 class="section-title">Partners <span class="red">&amp; Sponsors</span></h2>
+    <div class="partners-grid" style="grid-template-columns:1fr;">
+      <div class="partner-info-card">
+        <h3>🤝 Become a Partner</h3>
+        <p>We welcome collaborations with brands, gyms, nutrition companies and local businesses.</p>
+        <a href="https://wa.me/918285486858" target="_blank" class="btn-partner">
+          <i class="fa-brands fa-whatsapp"></i> Partner With VKR
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section section-dark">
+  <div class="section-inner">
+    <div class="section-label">GET IN TOUCH</div>
+    <h2 class="section-title">Contact <span class="red">VKR</span></h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <i class="fa-solid fa-phone red-icon"></i>
+        <h4>Call / WhatsApp</h4>
+        <a href="tel:8285486858">Akshay — 8285486858</a>
+        <a href="tel:9953067473">Ajay — 9953067473</a>
+      </div>
+      <div class="contact-card">
+        <i class="fa-solid fa-location-dot red-icon"></i>
+        <h4>Location</h4>
+        <p>Vasant Kunj, New Delhi</p>
+        <p>Event: Sanjay Van, Gate No. 1</p>
+      </div>
+      <div class="contact-card">
+        <i class="fa-brands fa-instagram red-icon"></i>
+        <h4>Social Media</h4>
+        <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank">@vasant_kunj_runner</a>
+        <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank">YouTube: VKR</a>
+      </div>
+    </div>
+    <div class="social-row">
+      <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank" class="social-btn whatsapp"><i class="fa-brands fa-whatsapp"></i> Join WhatsApp</a>
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank" class="social-btn instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank" class="social-btn facebook"><i class="fa-brands fa-facebook"></i> Facebook</a>
+      <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank" class="social-btn youtube"><i class="fa-brands fa-youtube"></i> YouTube</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="vkr_logo.png" alt="VKR">
+      <div>
+        <span class="footer-name">VASANT KUNJ RUNNERS</span>
+        <span class="footer-tag">Fitness • Friendship • Finish Lines</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#event">Event</a>
+      <a href="#team">Team</a>
+      <a href="#store">VKR Store</a>
+      <a href="register.html">Register</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/vasant_kunj_runner" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.facebook.com/share/1Pc8AXGDj5/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@vasantkunjrunnervkr" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://chat.whatsapp.com/BrPnQoCk3TuAJwou2jRXqJ" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p class="footer-copy">© 2026 Vasant Kunj Runners (VKR) • All Rights Reserved</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
